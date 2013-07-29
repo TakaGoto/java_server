@@ -1,37 +1,31 @@
 package com.server;
 
-
+import com.server.Mocks.MockServerSocket;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.net.Socket;
 
 import static junit.framework.Assert.assertEquals;
 
 public class ServerTest {
-    private ByteArrayOutputStream out = new ByteArrayOutputStream();
-    httpServerSocket serverSocket;
+    MockServerSocket mockServerSocket;
+    Server server;
 
     @Before public void initialize() {
-        System.setOut(new PrintStream(out));
+        mockServerSocket = new MockServerSocket(5000);
+        server = new Server(mockServerSocket);
     }
-    @Test public void getAndSetServerPortNumber() throws IOException {
-        serverSocket = new httpServerSocket(5000);
-        assertEquals(5000, serverSocket.getPort());
-    }
-
-    @Test public void getDefaultServerPortNumber() {
-        serverSocket = new httpServerSocket();
-        Integer port = serverSocket.getPort();
-        assertEquals(Integer.class, port.getClass());
+    @Test public void constructorGetsServerSocket() {
+        assertEquals(5000, server.getPort());
     }
 
-    @Test public void getErrorMessageWithWrongPort() {
-        serverSocket = new httpServerSocket(246);
-        assertEquals("Cannot listen to port: 246\n", out.toString());
+    @Test public void serverListensToPort() {
+        server.listen();
+        assertEquals(true, mockServerSocket.isClosed);
+    }
+
+    @Test public void serverAttemptsListeningToPort() {
+        server.listen();
+        assertEquals(1, mockServerSocket.listenMax);
     }
 }
 
