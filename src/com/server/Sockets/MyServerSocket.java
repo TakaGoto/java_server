@@ -14,8 +14,8 @@ public class MyServerSocket implements ServerSockets{
         }
     }
 
-    public Sockets listen() {
-        return null;
+    public Sockets listen() throws IOException {
+        return new MySocket(serverSocket.accept());
     }
 
     public int getPort() {
