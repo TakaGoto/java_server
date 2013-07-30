@@ -21,7 +21,6 @@ public class Server {
     public Server(ServerSockets serverSocket) {
         this.serverSocket = serverSocket;
         router = new Router();
-        router.addRoute("/");
     }
 
     public int getPort() {

@@ -1,12 +1,11 @@
 package com.server.Handlers;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.Hashtable;
 
-public class Response implements Responses {
+public class Response {
     private String httpVersion;
     private String statusCode;
 
