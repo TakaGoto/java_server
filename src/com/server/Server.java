@@ -28,8 +28,8 @@ public class Server {
         try {
             while(serverSocket.notClosed()) {
                 clientSocket = serverSocket.listen();
-                Hashtable<String, String> request = req.parseHeader(clientSocket.getInputStream());
-                resp.write(router.route(request), clientSocket.getOutputStream());
+                Hashtable<String, Object> request = req.parseHeader(clientSocket.getInputStream());
+                resp.writeTo(router.route(request), clientSocket.getOutputStream());
                 clientSocket.close();
             }
         } catch(IOException e) {

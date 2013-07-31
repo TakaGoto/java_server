@@ -8,7 +8,6 @@ import java.util.Hashtable;
 public class Router {
     private Hashtable<String, String> routes;
     private StatusLine statusLine;
-    private MessageHeader messageHeader;
 
     public Router() {
         routes = new Hashtable<String, String>();
@@ -16,30 +15,47 @@ public class Router {
         addRoute("/");
         addRoute("/redirect");
     }
-    public Hashtable<String, Object> route(Hashtable<String, String> req) {
+    public Hashtable<String, Object> route(Hashtable<String, Object> req) {
         Hashtable<String, Object> response = new Hashtable<String, Object>();
-        Hashtable body = new Hashtable();
-        String URI = req.get("Request-URI");
+        Hashtable<String, String> messageHeader = new Hashtable<String, String>();
+        String URI = (String) req.get("Request-URI");
 
         if(routes.get(URI) != null) {
-            statusLine = new StatusLine("200", req.get("HTTP-Version"));
-            messageHeader = new MessageHeader("text/html", req.get("Body").length());
-            response.put("Body", "hello");
+            if(URI.equals("/redirect")) {
+                statusLine = new StatusLine("301", req.get("HTTP-Version"));
+                messageHeader.put("Location", "http://localhost:5000/");
+            }
+            else statusLine = new StatusLine("200", req.get("HTTP-Version"));
+
+            messageHeader.put("Content-Type", "text/html");
+            messageHeader.put("Content-Length", "72");
+            messageHeader.put("Connection", "close");
             response.put("status-line", statusLine.getStatusLine());
             response.put("message-header", messageHeader);
-            response.put("message-body", body);
+
+            if(req.get("Method").equals("POST") || req.get("Method").equals("PUT")) {
+                Hashtable<String, String> body = (Hashtable<String, String>) req.get("Body");
+                addBodyToRoute("data = " + body.get("data"), URI);
+            }
+            response.put("message-body", routes.get(URI));
+
         } else {
             statusLine = new StatusLine("404", req.get("HTTP-Version"));
-            messageHeader = new MessageHeader("text/html", req.get("Body").length());
-            response.put("Body", "that sucks");
+            messageHeader.put("Content-Type", "text/html");
+            messageHeader.put("Content-Length", "0");
+            messageHeader.put("Connection", "close");
             response.put("status-line", statusLine.getStatusLine());
-            response.put("message-header", messageHeader.getMessageHeader());
-            response.put("message-body", body);
+            response.put("message-header", messageHeader);
+            response.put("message-body", "oh oh");
         }
         return response;
     }
 
     public void addRoute(String route) {
-        routes.put(route, " ");
+        routes.put(route, " empty ");
+    }
+
+    public void addBodyToRoute(String body, String URI) {
+        routes.put(URI, body);
     }
 }

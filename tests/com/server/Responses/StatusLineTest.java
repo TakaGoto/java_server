@@ -36,11 +36,11 @@ public class StatusLineTest {
 
     @Test public void getStatusLineRedirect() {
         statusLine = new StatusLine("301");
-        assertEquals("HTTP/1.0 301 Moved Permanently\r\n\r\n", statusLine.getStatusLine());
+        assertEquals("HTTP/1.0 301 Moved Permanently", statusLine.getStatusLine());
     }
 
     @Test public void getStatusLineTwoHundred() {
         statusLine = new StatusLine("200");
-        assertEquals("HTTP/1.0 200 OK\r\n\r\n", statusLine.getStatusLine());
+        assertEquals("HTTP/1.0 200 OK", statusLine.getStatusLine());
     }
 }

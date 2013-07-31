@@ -8,8 +8,8 @@ public class StatusLine {
         this.code = code;
     }
 
-    public StatusLine(String code, String httpVersion) {
-        this.httpVersion = httpVersion;
+    public StatusLine(String code, Object httpVersion) {
+        this.httpVersion = (String) httpVersion;
         this.code = code;
     }
 
@@ -29,6 +29,6 @@ public class StatusLine {
     }
 
     public String getStatusLine() {
-        return httpVersion + " " + code + " " + getReasonPhrase() + "\r\n\r\n";
+        return httpVersion + " " + code + " " + getReasonPhrase();
     }
 }

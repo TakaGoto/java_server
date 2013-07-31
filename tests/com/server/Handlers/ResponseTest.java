@@ -23,13 +23,14 @@ public class ResponseTest {
 
     @Test public void testWrite() throws IOException {
         Hashtable<String, Object> req = new Hashtable<String, Object>();
-        req.put("HTTP-Version", "HTTP/1.0");
-        req.put("Status-Code", "200");
-        req.put("Reason-Phrase", "OK");
-        req.put("Body", "<html><body>Tonorino Totoro</body></html>");
+        Hashtable<String, Object> header = new Hashtable<String, Object>();
+
+        req.put("status-line", "HTTP/1.0 200 OK");
+        req.put("message-header", header);
+        req.put("message-body", "Tonorino Totoro");
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        resp.write(req, out);
-        assertEquals("HTTP/1.0 200 OK \r\n\r\n<html><body>Tonorino Totoro</body></html>", out.toString());
+        resp.writeTo(req, out);
+        assertEquals("HTTP/1.0 200 OK\r\n\r\n<html><head><title></title></head><body>Tonorino Totoro</body></html>", out.toString());
     }
 }

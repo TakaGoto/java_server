@@ -25,13 +25,21 @@ public class Response {
         return statusCode;
     }
 
-    public void write(Hashtable<String, Object> request, OutputStream out) throws IOException {
-        out.write((request.get("HTTP-Version") + " ").getBytes(Charset.forName("utf-8")));
-        out.write((request.get("Status-Code") + " ").getBytes(Charset.forName("utf-8")));
-        out.write((request.get("Reason-Phrase") + " ").getBytes(Charset.forName("utf-8")));
+    public void writeTo(Hashtable<String, Object> request, OutputStream out) throws IOException {
+        out.write((request.get("status-line") + "").getBytes(Charset.forName("utf-8")));
         out.write("\r\n".getBytes(Charset.forName("utf-8")));
+
+        Hashtable<String, String> headers = (Hashtable<String, String>) request.get("message-header");
+
+        for (String key: headers.keySet()) {
+            String line = String.format("%s: %s", key, headers.get(key));
+            out.write(line.getBytes(Charset.forName("utf-8")));
+            out.write("\r\n".getBytes(Charset.forName("utf-8")));
+        }
+
+        String body = (String) request.get("message-body");
         out.write("\r\n".getBytes(Charset.forName("utf-8")));
-        out.write((request.get("Body") + " ").getBytes(Charset.forName("utf-8")));
+        out.write(("<html><head><title></title></head><body>" + body + "</body></html>").getBytes(Charset.forName("utf-8")));
         out.close();
     }
 }

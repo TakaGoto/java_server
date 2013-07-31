@@ -7,53 +7,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="005d0d06-143d-475a-8574-67559908350d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/server/Responses/MessageHeader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/com/server/Responses/MessageHeaderTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/server/Responses/StatusLine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/server/Handlers/Responses.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/server/Mocks/MockSocket.java" afterPath="$PROJECT_DIR$/tests/com/server/Mocks/MockSocket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java" afterPath="$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java" afterPath="$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/server/Handlers/Response.java" afterPath="$PROJECT_DIR$/src/com/server/Handlers/Response.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java" afterPath="$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/server/Router.java" afterPath="$PROJECT_DIR$/src/com/server/Router.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/server/RouterTest.java" afterPath="$PROJECT_DIR$/tests/com/server/RouterTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/server/Server.java" afterPath="$PROJECT_DIR$/src/com/server/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/server/Responses/StatusLine.java" afterPath="$PROJECT_DIR$/src/com/server/Responses/StatusLine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java" afterPath="$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="java_server.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Main.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375202561665" ignored="false" />
-    <file path="/Dummy.txt" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375209157546" ignored="false" />
-    <file path="/fragment.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375284933820" ignored="false" />
+    <file path="/Dummy.txt" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375293467912" ignored="false" />
+    <file path="/fragment.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375300386480" ignored="false" />
     <file path="/ServerTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375120522425" ignored="false" />
-    <file path="/Server.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375216797629" ignored="false" />
+    <file path="/Server.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375300032879" ignored="false" />
     <file path="/httpClientSocketTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375051955966" ignored="false" />
     <file path="/httpClientSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375052105689" ignored="false" />
     <file path="/ServerSockets.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375115652262" ignored="false" />
     <file path="/Sockets.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375123896439" ignored="false" />
     <file path="/ServerSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375115660244" ignored="false" />
     <file path="/ServerSocketTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375109851927" ignored="false" />
-    <file path="/MockServerSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375120850819" ignored="false" />
+    <file path="/MockServerSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375305623713" ignored="false" />
     <file path="/ResponseHandlerTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375103860435" ignored="false" />
     <file path="/ResponseHandler.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375133416961" ignored="false" />
-    <file path="/MySocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375123952807" ignored="false" />
-    <file path="/MockSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375120227569" ignored="false" />
+    <file path="/MySocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375303575094" ignored="false" />
+    <file path="/MockSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375305522129" ignored="false" />
     <file path="/MySocketTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375123077622" ignored="false" />
     <file path="/RequestHandlerTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375134045232" ignored="false" />
     <file path="/RequestHandler.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375125070676" ignored="false" />
     <file path="/Request.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375137052891" ignored="false" />
     <file path="/Requests.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375134059944" ignored="false" />
-    <file path="/ResponseTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375220675095" ignored="false" />
-    <file path="/Response.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375220576642" ignored="false" />
+    <file path="/ResponseTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375289095904" ignored="false" />
+    <file path="/Response.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375300908918" ignored="false" />
     <file path="/RequestTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375134037657" ignored="false" />
-    <file path="/RouterTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375283669850" ignored="false" />
-    <file path="/Router.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375287221035" ignored="false" />
+    <file path="/RouterTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375300402433" ignored="false" />
+    <file path="/Router.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375302826914" ignored="false" />
     <file path="/FileReaderTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375136724554" ignored="false" />
     <file path="/FileReader.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375136448056" ignored="false" />
     <file path="/RequestParderTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375137083750" ignored="false" />
-    <file path="/RequestParser.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375211003106" ignored="false" />
+    <file path="/RequestParser.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375300188537" ignored="false" />
     <file path="/MyServerSocket.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375209673385" ignored="false" />
     <file path="/Responses.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375197239619" ignored="false" />
-    <file path="/RequestParserTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375201744163" ignored="false" />
+    <file path="/RequestParserTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375300014235" ignored="false" />
     <file path="/StatusLineTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375285222340" ignored="false" />
     <file path="/StatusLine.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375285132189" ignored="false" />
     <file path="/MessageHeaderTest.java" changelist="005d0d06-143d-475a-8574-67559908350d" time="1375286995571" ignored="false" />
@@ -118,10 +118,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/server/Main.java">
+      <file leaf-file-name="FileReaderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/com/server/FileReaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+            <state line="14" column="13" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -130,20 +130,8 @@
       <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="37" selection-start="894" selection-end="894" vertical-scroll-proportion="0.0">
+            <state line="30" column="0" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Router.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/server/Router.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="74" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#572#588#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -151,73 +139,77 @@
       <file leaf-file-name="RouterTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/com/server/RouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="51" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0">
+            <state line="64" column="31" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#248#264#0" expanded="true" />
+                <element signature="e#2061#2077#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestParserTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="658" selection-end="658" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponseTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java">
+      <file leaf-file-name="ServerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/com/server/ServerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="43" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#648#664#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Response.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/Response.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="43" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatusLine.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/server/Responses/StatusLine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="26" selection-start="281" selection-end="281" vertical-scroll-proportion="0.26484752">
+            <state line="21" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageHeader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/server/Responses/MessageHeader.java">
+      <file leaf-file-name="RequestParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="81" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
+            <state line="8" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#791#807#0" expanded="true" />
+                <element signature="e#264#280#0" expanded="true" />
+                <element signature="e#1023#1039#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageHeaderTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/com/server/Responses/MessageHeaderTest.java">
+      <file leaf-file-name="Request.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="24" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.07462686">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatusLineTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java">
+      <file leaf-file-name="MockServerSocket.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/com/server/Mocks/MockServerSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="48" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="20" column="27" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MockSocket.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/com/server/Mocks/MockSocket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySocket.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/server/Sockets/MySocket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="15" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -240,30 +232,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/com/server/Handlers/RequestParderTest.java" />
-        <option value="$PROJECT_DIR$/src/com/server/Handlers/Request.java" />
-        <option value="$PROJECT_DIR$/src/com/server/Handlers/Responses.java" />
         <option value="$PROJECT_DIR$/src/com/server/Main.java" />
         <option value="$PROJECT_DIR$/src/com/server/Sockets/MyServerSocket.java" />
-        <option value="$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java" />
-        <option value="$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java" />
-        <option value="$PROJECT_DIR$/src/com/server/Server.java" />
-        <option value="$PROJECT_DIR$/src/com/server/Handlers/Response.java" />
-        <option value="$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java" />
-        <option value="$PROJECT_DIR$/tests/com/server/RouterTest.java" />
-        <option value="$PROJECT_DIR$/src/com/server/Responses/StatusLine.java" />
-        <option value="$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java" />
         <option value="$PROJECT_DIR$/tests/com/server/Responses/MessageHeaderTest.java" />
         <option value="$PROJECT_DIR$/src/com/server/Responses/MessageHeader.java" />
+        <option value="$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java" />
+        <option value="$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java" />
+        <option value="$PROJECT_DIR$/src/com/server/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/server/Responses/StatusLine.java" />
+        <option value="$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java" />
+        <option value="$PROJECT_DIR$/tests/com/server/RouterTest.java" />
         <option value="$PROJECT_DIR$/src/com/server/Router.java" />
+        <option value="$PROJECT_DIR$/src/com/server/Handlers/Response.java" />
+        <option value="$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java" />
+        <option value="$PROJECT_DIR$/src/com/server/Sockets/MySocket.java" />
+        <option value="$PROJECT_DIR$/tests/com/server/Mocks/MockSocket.java" />
+        <option value="$PROJECT_DIR$/tests/com/server/Mocks/MockServerSocket.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="26" />
-    <option name="y" value="22" />
-    <option name="width" value="1625" />
-    <option name="height" value="1024" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -294,6 +284,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -370,6 +361,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Mocks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Handlers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -424,13 +437,56 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Sockets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Responses" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Handlers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,29 +506,29 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.server.Responses" />
       <recent name="com.server.Handlers" />
       <recent name="com.server" />
       <recent name="com.server.Sockets" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.server.Handlers" />
       <recent name="com.server.Sockets" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MessageHeaderTest">
+  <component name="RunManager" selected="JUnit.ServerTest">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -495,74 +551,18 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="RouterTest.routeNotFound" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="RequestParserTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.server.*" />
+          <option name="PATTERN" value="com.server.Handlers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="java_server" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.server" />
-      <option name="MAIN_CLASS_NAME" value="com.server.RouterTest" />
-      <option name="METHOD_NAME" value="routeNotFound" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="RouterTest.addRoute" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="java_server" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.server" />
-      <option name="MAIN_CLASS_NAME" value="com.server.RouterTest" />
-      <option name="METHOD_NAME" value="addRoute" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="StatusLineTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.server.Responses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="java_server" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.server.Responses" />
-      <option name="MAIN_CLASS_NAME" value="com.server.Responses.StatusLineTest" />
+      <option name="PACKAGE_NAME" value="com.server.Handlers" />
+      <option name="MAIN_CLASS_NAME" value="com.server.Handlers.RequestParserTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -579,18 +579,69 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="MessageHeaderTest" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="All in java_server" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="java_server" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ResponseTest.testWrite" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.server.Responses.*" />
+          <option name="PATTERN" value="com.server.Handlers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="java_server" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.server.Responses" />
-      <option name="MAIN_CLASS_NAME" value="com.server.Responses.MessageHeaderTest" />
+      <option name="PACKAGE_NAME" value="com.server.Handlers" />
+      <option name="MAIN_CLASS_NAME" value="com.server.Handlers.ResponseTest" />
+      <option name="METHOD_NAME" value="testWrite" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ServerTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="java_server" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.server" />
+      <option name="MAIN_CLASS_NAME" value="com.server.ServerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -674,18 +725,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.RouterTest" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.RouterTest.routeNotFound" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.RouterTest.addRoute" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.StatusLineTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MessageHeaderTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.RequestParserTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.All in java_server" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ResponseTest.testWrite" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ServerTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MessageHeaderTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.StatusLineTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.RouterTest.addRoute" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.RouterTest.routeNotFound" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ServerTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.All in java_server" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ResponseTest.testWrite" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.RequestParserTest" />
       </list>
     </recent_temporary>
   </component>
@@ -716,8 +767,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="26" y="22" width="1625" height="1024" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -737,12 +788,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17542748" sideWeight="0.74557525" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25442478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16952264" sideWeight="0.89810926" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10189076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -811,97 +862,27 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/server/Sockets/MyServerSocket.java">
+    <entry file="file://$PROJECT_DIR$/src/com/server/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
+        <state line="35" column="81" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Sockets/MySocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="65" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/FileReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="27" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#264#280#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="37" selection-start="894" selection-end="894" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="43" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#648#664#0" expanded="true" />
+            <element signature="e#531#547#0" expanded="true" />
+            <element signature="e#614#630#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/Response.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="43" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="40" column="50" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/com/server/Responses/StatusLineTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="48" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/server/RouterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="51" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0">
+        <state line="43" column="36" selection-start="1591" selection-end="1591" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -909,34 +890,96 @@
     <entry file="file://$PROJECT_DIR$/tests/com/server/Responses/MessageHeaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="24" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/ResponseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="4" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/RequestTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/Handlers/RequestParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="658" selection-end="658" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/RouterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="31" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#248#264#0" expanded="true" />
+            <element signature="e#2061#2077#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Router.java">
+    <entry file="file://$PROJECT_DIR$/tests/com/server/FileReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="74" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
+        <state line="14" column="13" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/server/Sockets/MySocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="15" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/Mocks/MockServerSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="27" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/Mocks/MockSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/server/ServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/RequestParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#572#588#0" expanded="true" />
+            <element signature="e#264#280#0" expanded="true" />
+            <element signature="e#1023#1039#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Responses/MessageHeader.java">
+    <entry file="file://$PROJECT_DIR$/src/com/server/Handlers/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="81" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#791#807#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/server/Responses/StatusLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="281" selection-end="281" vertical-scroll-proportion="0.26484752">
+        <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.07462686">
           <folding />
         </state>
       </provider>

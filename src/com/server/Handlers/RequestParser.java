@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.Hashtable;
 
 public class RequestParser {
-    public Hashtable<String, String> parseHeader(InputStream inputStream) throws IOException {
-        Hashtable<String, String> requestHeader = new Hashtable<String, String>();
+    public Hashtable<String, Object> parseHeader(InputStream inputStream) throws IOException {
+        Hashtable<String, Object> requestHeader = new Hashtable<String, Object>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line = reader.readLine();
         String[] items;
@@ -19,6 +19,18 @@ public class RequestParser {
             items = line.split(": ");
             requestHeader.put(items[0], items[1]);
         }
+
+        try {
+            int length = Integer.parseInt((String) requestHeader.get("Content-Length"));
+            char[] query = new char[length];
+            reader.read(query);
+            Hashtable<String, String> params = new Hashtable<String, String>();
+            for(String param: String.valueOf(query).split("&")) {
+                String[] theParams = param.split("=");
+                params.put(theParams[0], theParams[1]);
+                requestHeader.put("Body", params);
+            }
+        } catch(NumberFormatException e){}
 
         return requestHeader;
     }
