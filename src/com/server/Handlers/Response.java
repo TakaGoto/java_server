@@ -25,13 +25,13 @@ public class Response {
         return statusCode;
     }
 
-    public void write(Hashtable<String, String> request, OutputStream out) throws IOException {
+    public void write(Hashtable<String, Object> request, OutputStream out) throws IOException {
         out.write((request.get("HTTP-Version") + " ").getBytes(Charset.forName("utf-8")));
         out.write((request.get("Status-Code") + " ").getBytes(Charset.forName("utf-8")));
         out.write((request.get("Reason-Phrase") + " ").getBytes(Charset.forName("utf-8")));
         out.write("\r\n".getBytes(Charset.forName("utf-8")));
         out.write("\r\n".getBytes(Charset.forName("utf-8")));
-        out.write((request.get("Body")).getBytes(Charset.forName("utf-8")));
+        out.write((request.get("Body") + " ").getBytes(Charset.forName("utf-8")));
         out.close();
     }
 }

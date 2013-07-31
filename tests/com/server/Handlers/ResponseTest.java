@@ -22,7 +22,7 @@ public class ResponseTest {
     }
 
     @Test public void testWrite() throws IOException {
-        Hashtable<String, String> req = new Hashtable<String, String>();
+        Hashtable<String, Object> req = new Hashtable<String, Object>();
         req.put("HTTP-Version", "HTTP/1.0");
         req.put("Status-Code", "200");
         req.put("Reason-Phrase", "OK");

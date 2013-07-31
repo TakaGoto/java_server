@@ -2,13 +2,10 @@ package com.server;
 
 import com.server.Handlers.RequestParser;
 import com.server.Handlers.Response;
-import com.server.Handlers.Responses;
 import com.server.Sockets.ServerSockets;
 import com.server.Sockets.Sockets;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.net.Socket;
 import java.util.Hashtable;
 
 public class Server {
