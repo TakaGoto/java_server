@@ -8,12 +8,15 @@ import java.util.Hashtable;
 public class Router {
     private Hashtable<String, String> routes;
     private StatusLine statusLine;
+    private MessageHeader messageHeader;
 
     public Router() {
         routes = new Hashtable<String, String>();
         addRoute("/form");
         addRoute("/");
         addRoute("/redirect");
+        addRoute("/file1");
+        addRoute("/text-file.txt");
     }
     public Hashtable<String, Object> route(Hashtable<String, Object> req) {
         Hashtable<String, Object> response = new Hashtable<String, Object>();
@@ -24,21 +27,26 @@ public class Router {
             if(URI.equals("/redirect")) {
                 statusLine = new StatusLine("301", req.get("HTTP-Version"));
                 messageHeader.put("Location", "http://localhost:5000/");
+            } else statusLine = new StatusLine("200", req.get("HTTP-Version"));
+
+            if(URI.equals("/file1") || URI.equals("/text-file.txt")) {
+                statusLine = new StatusLine("405", req.get("HTTP-Version"));
+                messageHeader.put("Allow", "GET");
             }
-            else statusLine = new StatusLine("200", req.get("HTTP-Version"));
 
             messageHeader.put("Content-Type", "text/html");
-            messageHeader.put("Content-Length", "72");
             messageHeader.put("Connection", "close");
             response.put("status-line", statusLine.getStatusLine());
             response.put("message-header", messageHeader);
 
             if(req.get("Method").equals("POST") || req.get("Method").equals("PUT")) {
-                Hashtable<String, String> body = (Hashtable<String, String>) req.get("Body");
-                addBodyToRoute("data = " + body.get("data"), URI);
+                if(req.containsKey("Body")) {
+                    Hashtable<String, String> body = (Hashtable<String, String>) req.get("Body");
+                    addBodyToRoute("data = " + body.get("data"), URI);
+                }
             }
+            messageHeader.put("Content-Length", String.valueOf(getBody(URI).length()));
             response.put("message-body", routes.get(URI));
-
         } else {
             statusLine = new StatusLine("404", req.get("HTTP-Version"));
             messageHeader.put("Content-Type", "text/html");
@@ -52,10 +60,14 @@ public class Router {
     }
 
     public void addRoute(String route) {
-        routes.put(route, " empty ");
+        routes.put(route, "<html><head><title></title></head><body> Empty </body></html>");
     }
 
     public void addBodyToRoute(String body, String URI) {
-        routes.put(URI, body);
+        routes.put(URI, "<html><head><title></title></head><body> " + body + " </body></html>");
+    }
+
+    public String getBody(String URI) {
+        return routes.get(URI);
     }
 }

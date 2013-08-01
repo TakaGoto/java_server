@@ -25,6 +25,7 @@ public class StatusLine {
         if(code.equals("200")) return "OK";
         if(code.equals("404")) return "Not Found";
         if(code.equals("301")) return "Moved Permanently";
+        if(code.equals("405")) return "Method Not Allowed";
         return "";
     }
 

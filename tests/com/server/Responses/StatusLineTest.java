@@ -43,4 +43,14 @@ public class StatusLineTest {
         statusLine = new StatusLine("200");
         assertEquals("HTTP/1.0 200 OK", statusLine.getStatusLine());
     }
+
+    @Test public void getStatusLineFourOhFive() {
+        statusLine = new StatusLine("405");
+        assertEquals("HTTP/1.0 405 Method Not Allowed", statusLine.getStatusLine());
+    }
+
+    @Test public void getDefaultStatusPhrase() {
+        statusLine = new StatusLine("600");
+        assertEquals("HTTP/1.0 600 ", statusLine.getStatusLine());
+    }
 }

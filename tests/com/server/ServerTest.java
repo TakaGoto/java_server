@@ -19,13 +19,13 @@ public class ServerTest {
     }
 
     @Test public void serverListensToPort() {
-        server.listen();
-        assertEquals(true, mockServerSocket.isClosed);
-    }
+       server.listen();
+       assertEquals(true, mockServerSocket.isClosed);
+   }
 
-    @Test public void serverAttemptsListeningToPort() {
-        server.listen();
-        assertEquals(1, mockServerSocket.listenMax);
-    }
+//   @Test public void serverAttemptsListeningToPort() {
+//       server.listen();
+//       assertEquals(1, mockServerSocket.listenMax);
+//   }
 }
 

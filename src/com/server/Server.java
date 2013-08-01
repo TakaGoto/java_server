@@ -12,7 +12,7 @@ public class Server {
     ServerSockets serverSocket;
     Sockets clientSocket;
     Router router;
-    RequestParser req = new RequestParser();
+    RequestParser req;
     Response resp = new Response();
 
     public Server(ServerSockets serverSocket) {

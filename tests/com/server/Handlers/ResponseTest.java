@@ -27,10 +27,24 @@ public class ResponseTest {
 
         req.put("status-line", "HTTP/1.0 200 OK");
         req.put("message-header", header);
-        req.put("message-body", "Tonorino Totoro");
+        req.put("message-body", "<html><head><title></title></head><body>Tonorino Totoro</body></html>");
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resp.writeTo(req, out);
         assertEquals("HTTP/1.0 200 OK\r\n\r\n<html><head><title></title></head><body>Tonorino Totoro</body></html>", out.toString());
+    }
+
+    @Test public void writeContainsMessageHeader() throws IOException {
+        Hashtable<String, Object> req = new Hashtable<String, Object>();
+        Hashtable<String, Object> header = new Hashtable<String, Object>();
+
+        header.put("Content-Type", "text/html");
+        req.put("status-line", "HTTP/1.0 200 OK");
+        req.put("message-header", header);
+        req.put("message-body", "<html><head><title></title></head><body>Tonorino Totoro</body></html>");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        resp.writeTo(req, out);
+        assertEquals("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<html><head><title></title></head><body>Tonorino Totoro</body></html>", out.toString());
     }
 }

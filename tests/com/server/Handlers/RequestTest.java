@@ -2,74 +2,36 @@ package com.server.Handlers;
 
 import org.junit.Test;
 
-import java.util.Hashtable;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 import static junit.framework.Assert.assertEquals;
 
 public class RequestTest {
-    Requests req;
-    Hashtable<String, String> header = new Hashtable<String, String>();
-    Hashtable<String, String> params = new Hashtable<String, String>();
+    @Test public void readsTheInputStream() throws IOException {
+        InputStream in = new InputStream() {
+            @Override public int read() throws IOException {
+                return 0;
+            }
+        };
 
-    @Test public void requestReturnsGetMethod() {
-        params.put("method", "GET");
-        req = new Request(params, header, "");
-        assertEquals("GET", req.getMethod());
+        in.read("Hello World".getBytes(Charset.forName("utf-8")));
+        Request req = new Request(in);
+        InputStreamReader reader = new InputStreamReader(in);
+        assertEquals(reader.getClass(), req.getInputStream().getClass());
     }
 
-    @Test public void returnsPostMethod() {
-        params.put("method", "POST");
-        req = new Request(params, header, "");
-        assertEquals("POST", req.getMethod());
-    }
-
-    @Test public void returnsPath() {
-        params.put("path", "/");
-        req = new Request(params, header, "");
-        assertEquals("/", req.getPath());
-    }
-
-    @Test public void returnsPathAndMethod() {
-        params.put("path", "/");
-        params.put("method", "GET");
-        req = new Request(params, header, "");
-        assertEquals("/", req.getPath());
-        assertEquals("GET", req.getMethod());
-    }
-
-    @Test public void returnsHTTPVersion() {
-        params.put("httpVersion", "HTTP/1.0");
-        req = new Request(params, header, "");
-        assertEquals("HTTP/1.0", req.getHttpVersion());
-    }
-
-    @Test public void returnQueryStringParameter() {
-        params.put("query", "Nihongo Wakaru?");
-        req = new Request(params, header, "");
-        assertEquals("Nihongo Wakaru?", req.getParam("query"));
-    }
-
-    @Test public void returnsMoveStringParam() {
-        params.put("move", "five");
-        req = new Request(params, header, "");
-        assertEquals("five", req.getParam("move"));
-    }
-
-    @Test public void shouldPrintMethodAndPost() {
-        params.put("path", "/");
-        params.put("method", "GET");
-        req = new Request(params, header, "");
-        assertEquals("GET /", req.toString());
-    }
-
-    @Test public void returnsBody() {
-        req = new Request(params, header, "");
-        assertEquals("", req.getBody());
-    }
-
-    @Test public void returnsHeader() {
-        header.put("Accept", "text/plain");
-        req = new Request(params, header, "");
-        assertEquals("text/plain", req.getHeader("Accept"));
+    @Test public void hasStatusLine() throws IOException {
+        String test = "GET / HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
+        Request req = new Request(inputStream);
+        req.getStatusLine();
+        assertEquals("GET", req.getField("Method"));
+        assertEquals("/", req.getField("Request-URI"));
+        assertEquals("HTTP/1.0", req.getField("HTTP-Version"));
+        assertEquals("GET / HTTP/1.0", req.getField("status-line"));
     }
 }
