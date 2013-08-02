@@ -1,4 +1,4 @@
-package com.server.Handlers;
+package com.server.Requests;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,13 +6,11 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 
 public class Request {
-    InputStreamReader reader;
-    RequestParser parser;
+    RequestParsers parser;
     Hashtable<String, Object> req = new Hashtable<String, Object>();
 
-    public Request(InputStream in) throws IOException {
-        reader =  new InputStreamReader(in);
-        parser = new RequestParser(reader);
+    public Request(RequestParsers parser) throws IOException {
+        this.parser = parser;
         getStatusLine();
         getMessageHeader();
         getMessageBody();

@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import com.server.Responses.Response;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;

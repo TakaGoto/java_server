@@ -1,5 +1,8 @@
 package com.server.Handlers;
 
+import com.server.Mocks.MockRequestParser;
+import com.server.Requests.Request;
+import com.server.Requests.RequestParsers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,12 +16,14 @@ import static junit.framework.Assert.assertEquals;
 public class RequestTest {
     String test;
     Request req;
+    RequestParsers parser;
     ByteArrayInputStream inputStream;
 
     @Before public void init() throws IOException {
         test = "GET / HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
         inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
-        req = new Request(inputStream);
+        parser = new MockRequestParser(inputStream);
+        req = new Request(parser);
     }
 
     @Test public void hasStatusLine() throws IOException {

@@ -16,12 +16,13 @@ public class Router {
         addRoute("/file1");
         addRoute("/text-file.txt");
     }
+
     public Hashtable<String, Object> route(Hashtable<String, Object> req) {
         Hashtable<String, Object> response = new Hashtable<String, Object>();
         Hashtable<String, String> messageHeader = new Hashtable<String, String>();
         String URI = (String) req.get("Request-URI");
 
-        if(routes.get(URI) != null) {
+        if(routes.containsKey(URI)) {
             if(URI.equals("/redirect")) {
                 statusLine = new StatusLine("301", req.get("HTTP-Version"));
                 messageHeader.put("Location", "http://localhost:5000/");

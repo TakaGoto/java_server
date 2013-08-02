@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import com.server.Requests.MyRequestParser;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,18 +15,14 @@ import static junit.framework.Assert.assertEquals;
 public class RequestParserTest {
     ByteArrayInputStream inputStream;
     InputStreamReader reader;
-    RequestParser req;
+    MyRequestParser req;
     String test;
 
     @Before public void init() throws IOException {
         test = "GET / HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
         inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
         reader = new InputStreamReader(inputStream);
-        req = new RequestParser(reader);
-    }
-
-    @Test public void hasReaderInstance() {
-        assertEquals(reader.getClass(), req.getReader().getClass());
+        req = new MyRequestParser(reader);
     }
 
     @Test public void parseStatusLine() throws IOException {

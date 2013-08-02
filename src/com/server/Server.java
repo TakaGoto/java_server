@@ -1,15 +1,19 @@
 package com.server;
 
-import com.server.Handlers.Request;
-import com.server.Handlers.Response;
+import com.server.Requests.MyRequestParser;
+import com.server.Requests.Request;
+import com.server.Requests.RequestParsers;
+import com.server.Responses.Response;
 import com.server.Sockets.ServerSockets;
 import com.server.Sockets.Sockets;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Server {
     private ServerSockets serverSocket;
     private Sockets clientSocket;
+    private RequestParsers parser;
     private Router router;
     private Request req;
     private Response resp = new Response();
@@ -27,7 +31,8 @@ public class Server {
         try {
             while(serverSocket.notClosed()) {
                 clientSocket = serverSocket.listen();
-                req = new Request(clientSocket.getInputStream());
+                parser = new MyRequestParser(clientSocket.getInputStream());
+                req = new Request(parser);
                 resp.writeTo(router.route(req.getReq()), clientSocket.getOutputStream());
                 clientSocket.close();
             }

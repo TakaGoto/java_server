@@ -1,18 +1,16 @@
-package com.server.Handlers;
+package com.server.Requests;
 
 import java.io.*;
 import java.util.Hashtable;
 
-public class RequestParser {
-    InputStreamReader reader;
+public class MyRequestParser implements RequestParsers {
     Hashtable<String, String> statusLine = new Hashtable<String, String>();
     Hashtable<String, Object> messageHeader = new Hashtable<String, Object>();
     Hashtable<String, Object> messageBody = new Hashtable<String, Object>();
     BufferedReader theReader;
 
-    public RequestParser(InputStreamReader reader) throws IOException {
-        this.reader = reader;
-        theReader = new BufferedReader(this.reader);
+    public MyRequestParser(InputStream in) throws IOException {
+        theReader = new BufferedReader(new InputStreamReader(in));
         parseStatusLine();
         parseMessageHeader();
     }
@@ -35,13 +33,9 @@ public class RequestParser {
         statusLine.put("status-line", items[0] + " " + items[1] + " " + items[2]);
     }
 
-    public InputStreamReader getReader() {
-        return reader;
-    }
-
     public void parseMessageHeader() throws IOException {
         String[] items;
-        String line = theReader.readLine();
+        String line;
 
         while (!(line = theReader.readLine()).equals("")) {
             items = line.split(": ");

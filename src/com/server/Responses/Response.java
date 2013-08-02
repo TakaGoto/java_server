@@ -1,4 +1,4 @@
-package com.server.Handlers;
+package com.server.Responses;
 
 import java.io.IOException;
 import java.io.OutputStream;
