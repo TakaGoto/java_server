@@ -1,37 +1,39 @@
 package com.server.Handlers;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.Hashtable;
 
 import static junit.framework.Assert.assertEquals;
 
 public class RequestTest {
-    @Test public void readsTheInputStream() throws IOException {
-        InputStream in = new InputStream() {
-            @Override public int read() throws IOException {
-                return 0;
-            }
-        };
+    String test;
+    Request req;
+    ByteArrayInputStream inputStream;
 
-        in.read("Hello World".getBytes(Charset.forName("utf-8")));
-        Request req = new Request(in);
-        InputStreamReader reader = new InputStreamReader(in);
-        assertEquals(reader.getClass(), req.getInputStream().getClass());
+    @Before public void init() throws IOException {
+        test = "GET / HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
+        inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
+        req = new Request(inputStream);
     }
 
     @Test public void hasStatusLine() throws IOException {
-        String test = "GET / HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
-        Request req = new Request(inputStream);
-        req.getStatusLine();
         assertEquals("GET", req.getField("Method"));
         assertEquals("/", req.getField("Request-URI"));
         assertEquals("HTTP/1.0", req.getField("HTTP-Version"));
         assertEquals("GET / HTTP/1.0", req.getField("status-line"));
+    }
+
+    @Test public void hasMessageHeader() throws IOException {
+        assertEquals("61", req.getField("Content-Length"));
+    }
+
+    @Test public void hasMessageBody() throws IOException {
+        Hashtable<String, String> body = (Hashtable<String, String>) req.getField("Body");
+        assertEquals("cosby", body.get("data"));
     }
 }

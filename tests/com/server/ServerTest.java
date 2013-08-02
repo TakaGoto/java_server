@@ -4,6 +4,10 @@ import com.server.Mocks.MockServerSocket;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static junit.framework.Assert.assertEquals;
 
 public class ServerTest {
@@ -23,9 +27,17 @@ public class ServerTest {
        assertEquals(true, mockServerSocket.isClosed);
    }
 
-//   @Test public void serverAttemptsListeningToPort() {
-//       server.listen();
-//       assertEquals(1, mockServerSocket.listenMax);
-//   }
+   @Test public void serverAttemptsListeningToPort() {
+       server.listen();
+       assertEquals(4, mockServerSocket.listenMax);
+   }
+
+   @Test public void serverIOException() {
+       ByteArrayOutputStream out = new ByteArrayOutputStream();
+       System.setOut(new PrintStream(out));
+       server.listen();
+       assertEquals(4, mockServerSocket.listenMax);
+       assertEquals(" ", out.toString());
+   }
 }
 

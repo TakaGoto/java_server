@@ -1,19 +1,18 @@
 package com.server;
 
-import com.server.Handlers.RequestParser;
+import com.server.Handlers.Request;
 import com.server.Handlers.Response;
 import com.server.Sockets.ServerSockets;
 import com.server.Sockets.Sockets;
 
 import java.io.IOException;
-import java.util.Hashtable;
 
 public class Server {
-    ServerSockets serverSocket;
-    Sockets clientSocket;
-    Router router;
-    RequestParser req;
-    Response resp = new Response();
+    private ServerSockets serverSocket;
+    private Sockets clientSocket;
+    private Router router;
+    private Request req;
+    private Response resp = new Response();
 
     public Server(ServerSockets serverSocket) {
         this.serverSocket = serverSocket;
@@ -28,8 +27,8 @@ public class Server {
         try {
             while(serverSocket.notClosed()) {
                 clientSocket = serverSocket.listen();
-                Hashtable<String, Object> request = req.parseHeader(clientSocket.getInputStream());
-                resp.writeTo(router.route(request), clientSocket.getOutputStream());
+                req = new Request(clientSocket.getInputStream());
+                resp.writeTo(router.route(req.getReq()), clientSocket.getOutputStream());
                 clientSocket.close();
             }
         } catch(IOException e) {

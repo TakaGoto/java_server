@@ -4,6 +4,7 @@ import com.server.Sockets.ServerSockets;
 import com.server.Sockets.Sockets;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class MockServerSocket implements ServerSockets{
     private int port;
@@ -15,9 +16,14 @@ public class MockServerSocket implements ServerSockets{
         this.port = port;
     }
 
-    public Sockets listen() throws IOException {
-        listenMax++;
-        isClosed = true;
+    public Sockets listen() {
+        try {
+            while(listenMax < 4) listenMax++;
+            isClosed = true;
+            if(listenMax == 4) throw new IOException();
+        } catch (IOException e) {
+            System.out.print(" ");
+        }
         return clientSocket;
     }
 

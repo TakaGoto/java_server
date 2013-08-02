@@ -25,4 +25,8 @@ public class MyServerSocket implements ServerSockets{
     public boolean notClosed() {
         return !serverSocket.isClosed();
     }
+
+    public void close() throws IOException {
+        serverSocket.close();
+    }
 }

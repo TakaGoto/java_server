@@ -1,6 +1,5 @@
 package com.server;
 
-import com.server.Responses.MessageHeader;
 import com.server.Responses.StatusLine;
 
 import java.util.Hashtable;
@@ -8,7 +7,6 @@ import java.util.Hashtable;
 public class Router {
     private Hashtable<String, String> routes;
     private StatusLine statusLine;
-    private MessageHeader messageHeader;
 
     public Router() {
         routes = new Hashtable<String, String>();
