@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class MySocket implements Sockets {
+public class MySocket implements ISockets {
     Socket clientSocket;
 
     public MySocket(Socket clientSocket) {

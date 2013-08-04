@@ -1,6 +1,5 @@
 package com.server.Sockets;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,8 +18,8 @@ public class MyServerSocketTest {
     }
 
     @Test public void getAndSetServerPortNumber() throws IOException {
-        serverSocket = new MyServerSocket(5000);
-        assertEquals(5000, serverSocket.getPort());
+        serverSocket = new MyServerSocket(5001);
+        assertEquals(5001, serverSocket.getPort());
         serverSocket.close();
     }
 
@@ -30,7 +29,7 @@ public class MyServerSocketTest {
     }
 
     @Test public void testServerIsClosed() throws IOException {
-        serverSocket = new MyServerSocket(5000);
+        serverSocket = new MyServerSocket(5001);
         assertEquals(true, serverSocket.notClosed());
         serverSocket.close();
     }

@@ -4,22 +4,23 @@ import com.server.Requests.MyRequestParser;
 import com.server.Requests.Request;
 import com.server.Requests.RequestParsers;
 import com.server.Responses.Response;
-import com.server.Sockets.ServerSockets;
-import com.server.Sockets.Sockets;
+import com.server.Responses.Router;
+import com.server.Sockets.IServerSockets;
+import com.server.Sockets.ISockets;
+import com.server.Sockets.MyServerSocket;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Server {
-    private ServerSockets serverSocket;
-    private Sockets clientSocket;
+    private IServerSockets serverSocket;
+    private ISockets clientSocket;
     private RequestParsers parser;
     private Router router;
     private Request req;
     private Response resp = new Response();
 
-    public Server(ServerSockets serverSocket) {
-        this.serverSocket = serverSocket;
+    public Server(int port) {
+        serverSocket = new MyServerSocket(port);
         router = new Router();
     }
 
@@ -39,5 +40,9 @@ public class Server {
         } catch(IOException e) {
             System.out.println("Accept failed: " + getPort());
         }
+    }
+
+    public void setServerSocket(IServerSockets serverSocket) {
+        this.serverSocket = serverSocket;
     }
 }

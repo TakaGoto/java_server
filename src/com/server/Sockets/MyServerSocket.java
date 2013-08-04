@@ -3,7 +3,7 @@ package com.server.Sockets;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public class MyServerSocket implements ServerSockets{
+public class MyServerSocket implements IServerSockets{
     ServerSocket serverSocket;
 
     public MyServerSocket(int port) {
@@ -14,7 +14,7 @@ public class MyServerSocket implements ServerSockets{
         }
     }
 
-    public Sockets listen() throws IOException {
+    public ISockets listen() throws IOException {
         return new MySocket(serverSocket.accept());
     }
 

@@ -14,15 +14,13 @@ import static junit.framework.Assert.assertEquals;
 
 public class RequestParserTest {
     ByteArrayInputStream inputStream;
-    InputStreamReader reader;
     MyRequestParser req;
     String test;
 
     @Before public void init() throws IOException {
         test = "GET / HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
         inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
-        reader = new InputStreamReader(inputStream);
-        req = new MyRequestParser(reader);
+        req = new MyRequestParser(inputStream);
     }
 
     @Test public void parseStatusLine() throws IOException {

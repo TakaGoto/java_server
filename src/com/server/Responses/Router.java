@@ -1,12 +1,12 @@
-package com.server;
+package com.server.Responses;
 
-import com.server.Responses.StatusLine;
+import com.server.Responses.ResponseStatusLine;
 
 import java.util.Hashtable;
 
 public class Router {
     private Hashtable<String, String> routes;
-    private StatusLine statusLine;
+    private ResponseStatusLine statusLine;
 
     public Router() {
         routes = new Hashtable<String, String>();
@@ -24,12 +24,12 @@ public class Router {
 
         if(routes.containsKey(URI)) {
             if(URI.equals("/redirect")) {
-                statusLine = new StatusLine("301", req.get("HTTP-Version"));
+                statusLine = new ResponseStatusLine("301", req.get("HTTP-Version"));
                 messageHeader.put("Location", "http://localhost:5000/");
-            } else statusLine = new StatusLine("200", req.get("HTTP-Version"));
+            } else statusLine = new ResponseStatusLine("200", req.get("HTTP-Version"));
 
             if(URI.equals("/file1") || URI.equals("/text-file.txt")) {
-                statusLine = new StatusLine("405", req.get("HTTP-Version"));
+                statusLine = new ResponseStatusLine("405", req.get("HTTP-Version"));
                 messageHeader.put("Allow", "GET");
             }
 
@@ -47,7 +47,7 @@ public class Router {
             messageHeader.put("Content-Length", String.valueOf(getBody(URI).length()));
             response.put("message-body", routes.get(URI));
         } else {
-            statusLine = new StatusLine("404", req.get("HTTP-Version"));
+            statusLine = new ResponseStatusLine("404", req.get("HTTP-Version"));
             messageHeader.put("Content-Type", "text/html");
             messageHeader.put("Content-Length", "0");
             messageHeader.put("Connection", "close");

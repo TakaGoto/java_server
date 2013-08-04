@@ -1,6 +1,7 @@
 package com.server;
 
 import com.server.Mocks.MockServerSocket;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,8 +17,10 @@ public class ServerTest {
 
     @Before public void initialize() {
         mockServerSocket = new MockServerSocket(5000);
-        server = new Server(mockServerSocket);
+        server = new Server(5000);
+        server.setServerSocket(mockServerSocket);
     }
+
     @Test public void constructorGetsServerSocket() {
         assertEquals(5000, server.getPort());
     }

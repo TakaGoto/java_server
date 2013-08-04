@@ -1,11 +1,11 @@
 package com.server.Mocks;
 
-import com.server.Sockets.Sockets;
+import com.server.Sockets.ISockets;
 
 import java.io.*;
 import java.nio.charset.Charset;
 
-public class MockSocket implements Sockets {
+public class MockSocket implements ISockets {
     public ByteArrayOutputStream out;
     public ByteArrayInputStream in;
 
