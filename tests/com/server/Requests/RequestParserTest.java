@@ -1,4 +1,4 @@
-package com.server.Handlers;
+package com.server.Requests;
 
 import com.server.Requests.MyRequestParser;
 import org.junit.Before;
@@ -40,5 +40,10 @@ public class RequestParserTest {
         Hashtable<String, Object> body = (Hashtable<String, Object>) req.getMessageBody().get("Body");
         assertEquals("61", req.getMessageBody().get("Content-Length"));
         assertEquals("cosby", body.get("data"));
+    }
+
+    @Test public void parseMessageHeader() {
+        Hashtable<String, Object> header = req.getMessageHeader();
+        assertEquals("10", header.get("Content-Length"));
     }
 }

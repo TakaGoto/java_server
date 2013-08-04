@@ -1,4 +1,4 @@
-package com.server.Handlers;
+package com.server.Requests;
 
 import com.server.Responses.Response;
 import org.junit.Test;

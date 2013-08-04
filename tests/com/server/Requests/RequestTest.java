@@ -1,4 +1,4 @@
-package com.server.Handlers;
+package com.server.Requests;
 
 import com.server.Mocks.MockRequestParser;
 import com.server.Requests.Request;
@@ -40,5 +40,16 @@ public class RequestTest {
     @Test public void hasMessageBody() throws IOException {
         Hashtable<String, String> body = (Hashtable<String, String>) req.getField("Body");
         assertEquals("cosby", body.get("data"));
+    }
+
+    @Test public void hasAllResponseFields() {
+        Hashtable<String, Object> request = req.getReq();
+        Hashtable<String, String> body = (Hashtable<String, String>) req.getField("Body");
+        assertEquals("cosby", body.get("data"));
+        assertEquals("61", req.getField("Content-Length"));
+        assertEquals("GET", req.getField("Method"));
+        assertEquals("/", req.getField("Request-URI"));
+        assertEquals("HTTP/1.0", req.getField("HTTP-Version"));
+        assertEquals("GET / HTTP/1.0", req.getField("status-line"));
     }
 }

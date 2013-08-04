@@ -8,8 +8,10 @@ import java.nio.charset.Charset;
 public class MockSocket implements ISockets {
     public ByteArrayOutputStream out;
     public ByteArrayInputStream in;
+    public int closedCount = 0;
 
     public void close() {
+        closedCount++;
     }
 
     public OutputStream getOutputStream() throws IOException {
@@ -17,7 +19,7 @@ public class MockSocket implements ISockets {
         return out;
     }
 
-    public InputStream getInputStream() throws IOException {
+    public InputStream getInputStream() {
         in = new ByteArrayInputStream("GET / HTTP/1.0\r\nContent-Type: text/html\r\n\r\n".getBytes(Charset.forName("utf-8")));
         return in;
     }

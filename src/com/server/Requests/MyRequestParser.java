@@ -41,7 +41,10 @@ public class MyRequestParser implements RequestParsers {
             items = line.split(": ");
             messageHeader.put(items[0], items[1]);
         }
+        parseMessageBody();
+    }
 
+    public void parseMessageBody() throws IOException {
         Hashtable<String, String> params = new Hashtable<String, String>();
 
         try {
@@ -56,7 +59,7 @@ public class MyRequestParser implements RequestParsers {
             }
             int totalLength = 51 + length;
             messageBody.put("Content-Length", String.valueOf(totalLength));
-        } catch(NumberFormatException e){}
+        } catch(NumberFormatException ignored){} catch (ArrayIndexOutOfBoundsException e){}
     }
 
     public Hashtable<String,Object> getMessageBody() {

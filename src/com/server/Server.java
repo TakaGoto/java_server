@@ -1,23 +1,21 @@
 package com.server;
 
-import com.server.Requests.MyRequestParser;
-import com.server.Requests.Request;
-import com.server.Requests.RequestParsers;
-import com.server.Responses.Response;
+import com.server.Requests.RequestHandler;
 import com.server.Responses.Router;
 import com.server.Sockets.IServerSockets;
 import com.server.Sockets.ISockets;
 import com.server.Sockets.MyServerSocket;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
     private IServerSockets serverSocket;
     private ISockets clientSocket;
-    private RequestParsers parser;
     private Router router;
-    private Request req;
-    private Response resp = new Response();
+    private ExecutorService exec = Executors.newCachedThreadPool();
+    RequestHandler reqHandler;
 
     public Server(int port) {
         serverSocket = new MyServerSocket(port);
@@ -32,10 +30,8 @@ public class Server {
         try {
             while(serverSocket.notClosed()) {
                 clientSocket = serverSocket.listen();
-                parser = new MyRequestParser(clientSocket.getInputStream());
-                req = new Request(parser);
-                resp.writeTo(router.route(req.getReq()), clientSocket.getOutputStream());
-                clientSocket.close();
+                reqHandler = new RequestHandler(clientSocket, router);
+                exec.execute(reqHandler);
             }
         } catch(IOException e) {
             System.out.println("Accept failed: " + getPort());
