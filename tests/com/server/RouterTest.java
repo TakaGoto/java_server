@@ -18,6 +18,7 @@ public class RouterTest {
     @Before public void init() {
         router = new Router();
         request.put("HTTP-Version", "HTTP/1.0");
+        request.put("Host", "http://localhost:5000");
         body.put("data", "cosby");
         body.put("length", "5");
         request.put("Body", body);
@@ -28,15 +29,6 @@ public class RouterTest {
         request.put("Method", "GET");
         response = router.route(request);
         assertEquals("HTTP/1.0 404 Not Found", response.get("status-line"));
-    }
-
-    @Test public void routeComesWithDefaultHTML() {
-        assertEquals("<html><head><title></title></head><body> Empty </body></html>", router.getBody("/"));
-    }
-
-    @Test public void routeHTMLChange() {
-        router.addBodyToRoute("Totoro", "/");
-        assertEquals("<html><head><title></title></head><body> Totoro </body></html>", router.getBody("/"));
     }
 
     @Test public void addRoute() {
@@ -63,7 +55,7 @@ public class RouterTest {
     }
 
     @Test public void postDataToBody() {
-        request.put("Request-URI", "/redirect");
+        request.put("Request-URI", "/form");
         request.put("Method", "POST");
         response = router.route(request);
         assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", response.get("message-body"));

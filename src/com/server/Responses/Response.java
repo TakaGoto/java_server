@@ -39,7 +39,7 @@ public class Response {
 
         String body = (String) request.get("message-body");
         out.write("\r\n".getBytes(Charset.forName("utf-8")));
-        out.write((body).getBytes(Charset.forName("utf-8")));
+        out.write(body.getBytes(Charset.forName("utf-8")));
         out.close();
     }
 }
