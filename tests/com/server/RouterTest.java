@@ -88,4 +88,8 @@ public class RouterTest {
     @Test public void routerHasPartialContent() {
         assertEquals(true, router.getRoutes().containsKey("/partial_content.txt"));
     }
+
+    @Test public void routerHasParameterDecode() {
+        assertEquals(true, router.getRoutes().containsKey("/parameters"));
+    }
 }

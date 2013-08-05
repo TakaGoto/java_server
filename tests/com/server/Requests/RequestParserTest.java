@@ -46,4 +46,14 @@ public class RequestParserTest {
         Hashtable<String, Object> header = req.getMessageHeader();
         assertEquals("10", header.get("Content-Length"));
     }
+
+    @Test public void PostWithParams() throws IOException {
+        test = "GET /parameters?hello=world&second_variable=cruelWorld HTTP/1.0\r\nHost: localhost:5000\r\nContent-Length: 10\r\n\r\ndata=cosby";
+        inputStream = new ByteArrayInputStream(test.getBytes(Charset.forName("utf-8")));
+        req = new MyRequestParser(inputStream);
+        Hashtable<String, String> params = (Hashtable<String, String>) req.getStatusLine().get("Parameters");
+        assertEquals("/parameters", req.getStatusLine().get("Request-URI"));
+        assertEquals("world", params.get("hello"));
+        assertEquals("cruelWorld", params.get("second_variable"));
+    }
 }

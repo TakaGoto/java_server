@@ -14,6 +14,7 @@ public class Router {
         routes = new Hashtable<String, Responder>();
         routes.put("/redirect", new Redirect());
         routes.put("/form", new PutPost());
+        routes.put("/parameters", new ParameterDecode());
         routes.put("/", new Root());
         routes.put("/text-file.txt", new FileHandler(rootDir));
         routes.put("/partial_content.txt", new FileHandler(rootDir));

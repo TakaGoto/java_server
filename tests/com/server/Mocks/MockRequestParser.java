@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.Hashtable;
 
 public class MockRequestParser implements RequestParsers{
-    Hashtable<String, String> statusLine = new Hashtable<String, String>();
+    Hashtable<String, Object> statusLine = new Hashtable<String, Object>();
     Hashtable<String, Object> messageHeader = new Hashtable<String, Object>();
     Hashtable<String, Object> messageBody = new Hashtable<String, Object>();
 
@@ -20,7 +20,7 @@ public class MockRequestParser implements RequestParsers{
     public void parseMessageHeader() throws IOException {
     }
 
-    public Hashtable<String, String> getStatusLine() {
+    public Hashtable<String, Object> getStatusLine() {
         statusLine.put("Method", "GET");
         statusLine.put("Request-URI", "/");
         statusLine.put("HTTP-Version", "HTTP/1.0");

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Hashtable;
 
 public class MyRequestParser implements RequestParsers {
-    Hashtable<String, String> statusLine = new Hashtable<String, String>();
+    Hashtable<String, Object> statusLine = new Hashtable<String, Object>();
     Hashtable<String, Object> messageHeader = new Hashtable<String, Object>();
     Hashtable<String, Object> messageBody = new Hashtable<String, Object>();
     BufferedReader theReader;
@@ -15,7 +15,7 @@ public class MyRequestParser implements RequestParsers {
         parseMessageHeader();
     }
 
-    public Hashtable<String, String> getStatusLine() {
+    public Hashtable<String, Object> getStatusLine() {
         return statusLine;
     }
 
@@ -28,9 +28,18 @@ public class MyRequestParser implements RequestParsers {
         String[] items;
         items = line.split("\\s");
         statusLine.put("Method", items[0]);
-        statusLine.put("Request-URI", items[1]);
         statusLine.put("HTTP-Version", items[2]);
-        statusLine.put("status-line", items[0] + " " + items[1] + " " + items[2]);
+
+        items = items[1].split("\\?");
+        statusLine.put("Request-URI", items[0]);
+        if(items.length > 1) {
+            statusLine.put("Parameters", ParameterDecoder.decode(items[1]));
+        }
+
+        statusLine.put("status-line",
+                statusLine.get("Method") + " " +
+                statusLine.get("Request-URI") + " " +
+                statusLine.get("HTTP-Version"));
     }
 
     public void parseMessageHeader() throws IOException {
