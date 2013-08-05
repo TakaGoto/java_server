@@ -16,8 +16,10 @@ public class ServerTest {
     Server server;
 
     @Before public void initialize() {
+        String rootDir = "/Users/takayuki/Coding/java/cob_spec/public";
+
         mockServerSocket = new MockServerSocket(5000);
-        server = new Server(5000);
+        server = new Server(5000,rootDir );
         server.setServerSocket(mockServerSocket);
     }
 
@@ -26,21 +28,26 @@ public class ServerTest {
     }
 
     @Test public void serverListensToPort() {
-       server.listen();
-       assertEquals(true, mockServerSocket.isClosed);
-   }
+        server.listen();
+        assertEquals(true, mockServerSocket.isClosed);
+    }
 
-   @Test public void serverAttemptsListeningToPort() {
-       server.listen();
-       assertEquals(4, mockServerSocket.listenMax);
-   }
+    @Test public void serverAttemptsListeningToPort() {
+        server.listen();
+        assertEquals(4, mockServerSocket.listenMax);
+    }
 
-   @Test public void serverIOException() {
-       ByteArrayOutputStream out = new ByteArrayOutputStream();
-       System.setOut(new PrintStream(out));
-       server.listen();
-       assertEquals(4, mockServerSocket.listenMax);
-       assertEquals(" ", out.toString());
-   }
+    @Test public void serverIOException() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        server.listen();
+        assertEquals(4, mockServerSocket.listenMax);
+        assertEquals(" ", out.toString());
+    }
+
+    @Test public void serverTakesInRouterDirectory() {
+        server = new Server(5000, "/public");
+        assertEquals("/public", server.getRouter().getDir());
+    }
 }
 

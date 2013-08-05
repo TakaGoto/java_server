@@ -4,6 +4,7 @@ import com.server.Responses.Router;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Hashtable;
 
 import static junit.framework.Assert.assertEquals;
@@ -16,7 +17,7 @@ public class RouterTest {
     Hashtable<String, String> header;
 
     @Before public void init() {
-        router = new Router();
+        router = new Router("/Users/takayuki/Coding/java/cob_spec/public\n");
         request.put("HTTP-Version", "HTTP/1.0");
         request.put("Host", "http://localhost:5000");
         body.put("data", "cosby");
@@ -24,28 +25,28 @@ public class RouterTest {
         request.put("Body", body);
     }
 
-    @Test public void routeNotFound() {
+    @Test public void routeNotFound() throws IOException {
         request.put("Request-URI", "/wrong_uri");
         request.put("Method", "GET");
         response = router.route(request);
         assertEquals("HTTP/1.0 404 Not Found", response.get("status-line"));
     }
 
-    @Test public void addRoute() {
+    @Test public void addRoute() throws IOException {
         request.put("Request-URI", "/");
         request.put("Method", "GET");
         response = router.route(request);
         assertEquals("HTTP/1.0 200 OK", response.get("status-line"));
     }
 
-    @Test public void routeFormShouldBeTwoHundred() {
+    @Test public void routeFormShouldBeTwoHundred() throws IOException {
         request.put("Request-URI", "/form");
         request.put("Method", "GET");
         response = router.route(request);
         assertEquals("HTTP/1.0 200 OK", response.get("status-line"));
     }
 
-    @Test public void routeRedirectsToRoot() {
+    @Test public void routeRedirectsToRoot() throws IOException {
         request.put("Request-URI", "/redirect");
         request.put("Method", "GET");
         response = router.route(request);
@@ -54,21 +55,21 @@ public class RouterTest {
         assertEquals("http://localhost:5000/", header.get("Location"));
     }
 
-    @Test public void postDataToBody() {
+    @Test public void postDataToBody() throws IOException {
         request.put("Request-URI", "/form");
         request.put("Method", "POST");
         response = router.route(request);
         assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", response.get("message-body"));
     }
 
-    @Test public void FourOhFiveMethodNotAllowed() {
+    @Test public void FourOhFiveMethodNotAllowed() throws IOException {
         request.put("Request-URI", "/file1");
         request.put("Method", "PUT");
         response = router.route(request);
         assertEquals("HTTP/1.0 405 Method Not Allowed", response.get("status-line"));
     }
 
-    @Test public void postRequestWithoutBody() {
+    @Test public void postRequestWithoutBody() throws IOException {
         request.put("Request-URI", "/file1");
         request.put("Method", "POST");
         request.remove("Body");
@@ -76,11 +77,15 @@ public class RouterTest {
         assertEquals("<html><head><title></title></head><body> Empty </body></html>", response.get("message-body"));
     }
 
-    @Test public void textFileIsFourOhFive() {
+    @Test public void textFileIsFourOhFive() throws IOException {
         request.put("Request-URI", "/text-file.txt");
         request.put("Method", "PUT");
         request.remove("Body");
         response = router.route(request);
         assertEquals("<html><head><title></title></head><body> Empty </body></html>", response.get("message-body"));
+    }
+
+    @Test public void routerHasPartialContent() {
+        assertEquals(true, router.getRoutes().containsKey("/partial_content.txt"));
     }
 }

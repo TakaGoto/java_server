@@ -28,6 +28,13 @@ public class ResponseStatusLineTest {
         assertEquals("HTTP/1.0", statusLine.getHttpVersion());
     }
 
+    @Test public void hasTwoOhSixStatus() {
+        statusLine = new ResponseStatusLine("206");
+        assertEquals("Partial Content", statusLine.getReasonPhrase());
+        assertEquals("206", statusLine.getCode());
+        assertEquals("HTTP/1.0", statusLine.getHttpVersion());
+    }
+
     @Test public void hasRedirectMovedPermanent() {
         statusLine = new ResponseStatusLine("301");
         assertEquals("Moved Permanently", statusLine.getReasonPhrase());

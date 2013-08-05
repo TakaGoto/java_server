@@ -1,9 +1,20 @@
 package com.server;
 
+
 public class Main {
+    private static int port = 5000;
+    private static String rootDir = null;
 
     public static void main(String[] args) {
-        Server server = new Server(5000);
+        parseArgs(args);
+        Server server = new Server(port, rootDir);
         server.listen();
+    }
+
+    private static void parseArgs(String[] args) {
+        try {
+            port = Integer.parseInt(args[1]);
+            rootDir = args[3];
+        } catch (ArrayIndexOutOfBoundsException e) {}
     }
 }

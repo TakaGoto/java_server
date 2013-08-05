@@ -17,13 +17,17 @@ public class Server {
     private ExecutorService exec = Executors.newCachedThreadPool();
     RequestHandler reqHandler;
 
-    public Server(int port) {
+    public Server(int port, String rootDir) {
         serverSocket = new MyServerSocket(port);
-        router = new Router();
+        router = new Router(rootDir);
     }
 
     public int getPort() {
         return serverSocket.getPort();
+    }
+
+    public Router getRouter() {
+        return router;
     }
 
     public void listen() {

@@ -40,6 +40,7 @@ public class ResponseStatusLine {
 
     private void setUpStatus() {
         status.put("200", "OK");
+        status.put("206", "Partial Content");
         status.put("301", "Moved Permanently");
         status.put("404", "Not Found");
         status.put("405", "Method Not Allowed");

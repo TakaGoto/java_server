@@ -18,7 +18,8 @@ public class RequestHandlerTest {
     RequestHandler reqHandler;
 
     @Before public void init() {
-        router = new Router();
+        String rootDir = "/Users/takayuki/Coding/java/cob_spec/public\n";
+        router = new Router(rootDir);
         reqHandler = new RequestHandler(clientSocket, router);
     }
 
