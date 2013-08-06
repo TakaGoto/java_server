@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Hashtable;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class RootTest {
     Root root;
@@ -32,5 +33,29 @@ public class RootTest {
         req.put("Host", "http://localhost:5000");
         Hashtable<String, Object> response = root.respond(req);
         assertEquals("HTTP/1.0 404 Not Found", response.get("status-line"));
+    }
+
+    @Test public void rootBodyContainsFile1() {
+        assertTrue(root.getBody().contains("file1"));
+    }
+
+    @Test public void rootBodyContainsFile2() {
+        assertTrue(root.getBody().contains("file2"));
+    }
+
+    @Test public void rootBodyContainsImageGif() {
+        assertTrue(root.getBody().contains("image.gif"));
+    }
+
+    @Test public void rootBodyContainsImageJpeg() {
+        assertTrue(root.getBody().contains("image.jpeg"));
+    }
+
+    @Test public void rootBodyContainsImagePng() {
+        assertTrue(root.getBody().contains("image.png"));
+    }
+
+    @Test public void rootBodyContainsTextFile() {
+        assertTrue(root.getBody().contains("text-file.txt"));
     }
 }

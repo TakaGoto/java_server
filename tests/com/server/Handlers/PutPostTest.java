@@ -2,6 +2,7 @@ package com.server.Handlers;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Hashtable;
 
 import static junit.framework.Assert.assertEquals;
@@ -11,7 +12,7 @@ public class PutPostTest {
     Hashtable<String, Object> req = new Hashtable<String, Object>();
     Hashtable<String, Object> resp = new Hashtable<String, Object>();
 
-    @Test public void testGetPutGetPost() {
+    @Test public void testGetPutGetPost() throws IOException {
         Hashtable<String, String> body = new Hashtable<String, String>();
         body.put("data", "cosby");
         body.put("length", "5");
@@ -20,6 +21,7 @@ public class PutPostTest {
         req.put("Method", "POST");
         req.put("Body", body);
         resp = putPost.respond(req);
-        assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", resp.get("message-body"));
+        String newBody = new String((byte[]) resp.get("message-body"), "UTF-8");
+        assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", newBody);
     }
 }

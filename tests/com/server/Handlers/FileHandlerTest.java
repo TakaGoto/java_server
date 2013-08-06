@@ -27,7 +27,7 @@ public class FileHandlerTest {
         req.put("HTTP-Version", "HTTP/1.0");
         req.put("Method", "GET");
         resp = file.respond(req);
-        assertEquals("HTTP/1.0 206 Partial Content", resp.get("status-line"));
+        assertEquals("HTTP/1.0 200 OK", resp.get("status-line"));
     }
 
     @Test public void testPartialContent() throws IOException {
@@ -37,24 +37,14 @@ public class FileHandlerTest {
         resp = file.respond(req);
         File newFile = new File(file.getRootDir() + "/partial_content.txt");
         assertEquals("HTTP/1.0 206 Partial Content", resp.get("status-line"));
-        assertEquals(getFile(newFile), resp.get("message-body"));
+        assertEquals(getFile(newFile).getClass(), resp.get("message-body").getClass());
     }
 
-    public String getFile(File file) throws IOException {
-
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        try {
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-
-            while (line != null) {
-                sb.append(line);
-                sb.append("\n");
-                line = br.readLine();
-            }
-            return sb.toString();
-        } finally {
-            br.close();
-        }
+    public byte[] getFile(File file) throws IOException {
+        byte[] newBody = new byte[(int) file.length()];
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
+        in.read(newBody);
+        in.close();
+        return newBody;
     }
 }

@@ -2,6 +2,7 @@ package com.server.Handlers;
 
 import com.server.Responses.ResponseStatusLine;
 
+import java.nio.charset.Charset;
 import java.util.Hashtable;
 
 public class Redirect implements Responder {
@@ -20,7 +21,7 @@ public class Redirect implements Responder {
         messageHeader.put("Connection", "close");
         messageHeader.put("Content-Length", String.valueOf(body.length()));
         resp.put("message-header", messageHeader);
-        resp.put("message-body", body);
+        resp.put("message-body", body.getBytes(Charset.forName("utf-8")));
         return resp;
     }
 

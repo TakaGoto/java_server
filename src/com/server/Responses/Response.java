@@ -3,6 +3,7 @@ package com.server.Responses;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Response {
@@ -37,9 +38,8 @@ public class Response {
             out.write("\r\n".getBytes(Charset.forName("utf-8")));
         }
 
-        String body = (String) request.get("message-body");
         out.write("\r\n".getBytes(Charset.forName("utf-8")));
-        out.write(body.getBytes(Charset.forName("utf-8")));
+        out.write((byte[]) request.get("message-body"));
         out.close();
     }
 }

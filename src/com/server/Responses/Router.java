@@ -3,6 +3,7 @@ package com.server.Responses;
 import com.server.Handlers.*;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Hashtable;
 
 public class Router {
@@ -19,6 +20,9 @@ public class Router {
         routes.put("/text-file.txt", new FileHandler(rootDir));
         routes.put("/partial_content.txt", new FileHandler(rootDir));
         routes.put("/file1", new FileHandler(rootDir));
+        routes.put("/image.jpeg", new FileHandler(rootDir));
+        routes.put("/image.png", new FileHandler(rootDir));
+        routes.put("/image.gif", new FileHandler(rootDir));
     }
 
     public Hashtable<String, Object> route(Hashtable<String, Object> req) throws IOException {
@@ -33,7 +37,7 @@ public class Router {
             response.put("status-line", new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
             header.put("Content-Type", "text/html");
             response.put("message-header", header);
-            response.put("message-body", "");
+            response.put("message-body", "".getBytes(Charset.forName("utf-8")));
             return response;
         }
     }

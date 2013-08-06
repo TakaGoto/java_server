@@ -1,16 +1,23 @@
 package com.server.Requests;
 
 import com.server.Responses.Response;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Hashtable;
 
 import static junit.framework.Assert.assertEquals;
 
 public class ResponseTest {
     Response resp = new Response();
+    String body;
+
+    @Before public void init() {
+        body = "<html><head><title></title></head><body>Tonorino Totoro</body></html>";
+    }
 
     @Test public void getHttpVersion() {
         resp.setHttpVersion("1.0");
@@ -28,7 +35,7 @@ public class ResponseTest {
 
         req.put("status-line", "HTTP/1.0 200 OK");
         req.put("message-header", header);
-        req.put("message-body", "<html><head><title></title></head><body>Tonorino Totoro</body></html>");
+        req.put("message-body", body.getBytes(Charset.forName("utf-8")));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resp.writeTo(req, out);
@@ -42,7 +49,7 @@ public class ResponseTest {
         header.put("Content-Type", "text/html");
         req.put("status-line", "HTTP/1.0 200 OK");
         req.put("message-header", header);
-        req.put("message-body", "<html><head><title></title></head><body>Tonorino Totoro</body></html>");
+        req.put("message-body", body.getBytes(Charset.forName("utf-8")));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resp.writeTo(req, out);

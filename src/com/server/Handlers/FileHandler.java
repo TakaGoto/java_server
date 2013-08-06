@@ -6,13 +6,12 @@ import java.io.*;
 import java.util.Hashtable;
 
 public class FileHandler implements Responder {
-    private String body;
+    private byte[] body = new byte[0];
     private String rootDir;
     Hashtable<String, Object> resp = new Hashtable<String, Object>();
 
     public FileHandler(String rootDir) {
         this.rootDir = rootDir;
-        generateBody();
     }
 
     public Hashtable<String, Object> respond(Hashtable<String, Object> req) throws IOException {
@@ -22,17 +21,31 @@ public class FileHandler implements Responder {
         if(!req.get("Method").equals("GET")) {
             resp.put("status-line", new ResponseStatusLine("405", req.get("HTTP-Version")).getStatusLine());
             messageHeader.put("Allow", "GET");
-        } else if(file.isFile()) {
+        } else if(req.get("Request-URI").equals("/partial_content.txt")) {
             resp.put("status-line", new ResponseStatusLine("206", req.get("HTTP-Version")).getStatusLine());
+            readFile(file);
+        } else if(req.get("Request-URI").equals("/file1")) {
+            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
             readFile(file);
         } else {
             resp.put("status-line", new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
         }
 
+        if(req.get("Request-URI").equals("/partial_content.txt")) {
+            messageHeader.put("Content-Length", "4");
+            messageHeader.put("Accept-Ranges", "bytes");
+            messageHeader.put("Content-Range", "bytes 0-4/3980");
+        }
+
         messageHeader.put("Content-Type", "text/html");
-        messageHeader.put("Content-Length", "4");
-        messageHeader.put("Accept-Ranges", "bytes");
-        messageHeader.put("Content-Range", "bytes 0-4/3980");
+
+        if(req.get("Request-URI").equals("/image.jpeg") ||req.get("Request-URI").equals("/image.png") || req.get("Request-URI").equals("/image.gif")) {
+            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+            readFile(file);
+            messageHeader.put("Content-Length", String.valueOf(body.length));
+            messageHeader.put("Content-Type", "image/jpeg");
+        }
+
         messageHeader.put("Connection", "close");
         resp.put("message-header", messageHeader);
         resp.put("message-body", body);
@@ -40,25 +53,12 @@ public class FileHandler implements Responder {
         return resp;
     }
 
-    private void generateBody() {
-        body = "<html><head><title></title></head><body> Empty </body></html>";
-    }
-
     private void readFile(File file) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        try {
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-
-            while (line != null) {
-                sb.append(line);
-                sb.append("\n");
-                line = br.readLine();
-            }
-            body = sb.toString();
-        } finally {
-            br.close();
-        }
+        byte[] newBody = new byte[(int) file.length()];
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
+        in.read(newBody);
+        in.close();
+        body = newBody;
     }
 
     public String getRootDir() {

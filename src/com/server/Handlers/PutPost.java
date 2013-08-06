@@ -2,6 +2,7 @@ package com.server.Handlers;
 
 import com.server.Responses.ResponseStatusLine;
 
+import java.nio.charset.Charset;
 import java.util.Hashtable;
 
 public class PutPost implements Responder {
@@ -23,7 +24,7 @@ public class PutPost implements Responder {
         }
 
         resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
-        resp.put("message-body", this.body);
+        resp.put("message-body", this.body.getBytes(Charset.forName("utf-8")));
         messageHeader.put("Content-Length", String.valueOf(this.body.length()));
         messageHeader.put("Content-Type", "text/html");
         messageHeader.put("Connection", "close");

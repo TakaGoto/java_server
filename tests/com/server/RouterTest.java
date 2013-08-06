@@ -59,7 +59,8 @@ public class RouterTest {
         request.put("Request-URI", "/form");
         request.put("Method", "POST");
         response = router.route(request);
-        assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", response.get("message-body"));
+        String newBody = new String((byte[]) response.get("message-body"), "UTF-8");
+        assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", newBody);
     }
 
     @Test public void FourOhFiveMethodNotAllowed() throws IOException {
@@ -74,7 +75,8 @@ public class RouterTest {
         request.put("Method", "POST");
         request.remove("Body");
         response = router.route(request);
-        assertEquals("<html><head><title></title></head><body> Empty </body></html>", response.get("message-body"));
+        String body = new String((byte[]) response.get("message-body"), "UTF-8");
+        assertEquals("", body);
     }
 
     @Test public void textFileIsFourOhFive() throws IOException {
@@ -82,7 +84,8 @@ public class RouterTest {
         request.put("Method", "PUT");
         request.remove("Body");
         response = router.route(request);
-        assertEquals("<html><head><title></title></head><body> Empty </body></html>", response.get("message-body"));
+        String body = new String((byte[]) response.get("message-body"), "UTF-8");
+        assertEquals("", body);
     }
 
     @Test public void routerHasPartialContent() {

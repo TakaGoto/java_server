@@ -2,6 +2,7 @@ package com.server.Handlers;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Hashtable;
 
 import static junit.framework.Assert.assertEquals;
@@ -11,7 +12,7 @@ public class ParameterDecodeTest {
     Hashtable<String, Object> req = new Hashtable<String, Object>();
     Hashtable<String, Object> resp = new Hashtable<String, Object>();
 
-    @Test public void testParameterDecode() {
+    @Test public void testParameterDecode() throws IOException {
         Hashtable<String, String> body = new Hashtable<String, String>();
         Hashtable<String, String> params = new Hashtable<String, String>();
         params.put("hello", "world");
@@ -21,8 +22,9 @@ public class ParameterDecodeTest {
         req.put("Method", "POST");
         req.put("Body", body);
         resp = parameterDecode.respond(req);
+        String newBody = new String((byte[]) resp.get("message-body"), "UTF-8");
         assertEquals("<html><head><title></title></head><body>  hello = world\n" +
                 "cruel = life\n" +
-                " </body></html>", resp.get("message-body"));
+                " </body></html>", newBody);
     }
 }
