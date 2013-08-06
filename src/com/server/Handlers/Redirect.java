@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import com.server.HtmlGenerator;
 import com.server.Responses.ResponseStatusLine;
 
 import java.nio.charset.Charset;
@@ -26,6 +27,6 @@ public class Redirect implements Responder {
     }
 
     private void generateBody() {
-        body = "<html><head><title></title></head><body> Empty </body></html>";
+        body = HtmlGenerator.getDefaultHTML();
     }
 }

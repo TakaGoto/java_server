@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import com.server.HtmlGenerator;
 import com.server.Responses.ResponseStatusLine;
 
 import java.nio.charset.Charset;
@@ -19,7 +20,7 @@ public class PutPost implements Responder {
         if(req.containsValue("POST") || req.containsValue("PUT")) {
             if(req.containsKey("Body")) {
                 Hashtable<String, String> body = (Hashtable<String, String>) req.get("Body");
-                echoBody(body.get("data"));
+                echoBody((Hashtable<String, String>) req.get("Body"));
             }
         }
 
@@ -33,10 +34,16 @@ public class PutPost implements Responder {
     }
 
     private void generateBody() {
-        body = "<html><head><title></title></head><body> Empty </body></html>";
+        body = HtmlGenerator.getDefaultHTML();
     }
 
-    private void echoBody(String body) {
-        this.body = "<html><head><title></title></head><body> data = " + body + " </body></html>";
+    private void echoBody(Hashtable body) {
+        String newBody = "";
+        for(Object key: body.keySet()) {
+            if(key.equals("data")) {
+                newBody = newBody.concat(key + " = " + body.get(key));
+            }
+        }
+        this.body = HtmlGenerator.echoBody(newBody);
     }
 }

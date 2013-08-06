@@ -1,5 +1,6 @@
 package com.server.Requests;
 
+import com.server.HtmlGenerator;
 import com.server.Responses.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class ResponseTest {
     String body;
 
     @Before public void init() {
-        body = "<html><head><title></title></head><body>Tonorino Totoro</body></html>";
+        body = HtmlGenerator.echoBody("Tonarino Totoro");
     }
 
     @Test public void getHttpVersion() {
@@ -39,7 +40,7 @@ public class ResponseTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resp.writeTo(req, out);
-        assertEquals("HTTP/1.0 200 OK\r\n\r\n<html><head><title></title></head><body>Tonorino Totoro</body></html>", out.toString());
+        assertEquals("HTTP/1.0 200 OK\r\n\r\n<html><head><title></title></head><body> Tonarino Totoro </body></html>", out.toString());
     }
 
     @Test public void writeContainsMessageHeader() throws IOException {
@@ -53,6 +54,6 @@ public class ResponseTest {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resp.writeTo(req, out);
-        assertEquals("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<html><head><title></title></head><body>Tonorino Totoro</body></html>", out.toString());
+        assertEquals("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<html><head><title></title></head><body> Tonarino Totoro </body></html>", out.toString());
     }
 }

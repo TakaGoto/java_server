@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import com.server.HtmlGenerator;
 import com.server.Responses.ResponseStatusLine;
 
 import java.nio.charset.Charset;
@@ -28,11 +29,11 @@ public class ParameterDecode implements Responder {
     }
 
     private void generateBody() {
-        body = "<html><head><title></title></head><body> Empty </body></html>";
+        body = HtmlGenerator.getDefaultHTML();
     }
 
     private void echoBody(String body) {
-        this.body = "<html><head><title></title></head><body> " + body + " </body></html>";
+        this.body = HtmlGenerator.echoBody(body);
     }
 
     private void getParams(Hashtable body) {
