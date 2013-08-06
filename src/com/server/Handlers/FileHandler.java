@@ -16,41 +16,48 @@ public class FileHandler implements Responder {
 
     public Hashtable<String, Object> respond(Hashtable<String, Object> req) throws IOException {
         Hashtable<String, String> messageHeader = new Hashtable<String, String>();
+        String statusLine;
         File file = new File(rootDir, ((String) req.get("Request-URI")).substring(1));
 
         if(!req.get("Method").equals("GET")) {
-            resp.put("status-line", new ResponseStatusLine("405", req.get("HTTP-Version")).getStatusLine());
+            statusLine = String.valueOf(new ResponseStatusLine("405", req.get("HTTP-Version")).getStatusLine());
             messageHeader.put("Allow", "GET");
-        } else if(req.get("Request-URI").equals("/partial_content.txt")) {
-            resp.put("status-line", new ResponseStatusLine("206", req.get("HTTP-Version")).getStatusLine());
+        } else if(file.isFile()) {
+            statusLine = getStatusLine(req);
             readFile(file);
-        } else if(req.get("Request-URI").equals("/file1")) {
-            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
-            readFile(file);
+            messageHeader = getMessageHeader(req);
         } else {
-            resp.put("status-line", new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
-        }
-
-        if(req.get("Request-URI").equals("/partial_content.txt")) {
-            messageHeader.put("Content-Length", "4");
-            messageHeader.put("Accept-Ranges", "bytes");
-            messageHeader.put("Content-Range", "bytes 0-4/3980");
-        }
-
-        messageHeader.put("Content-Type", "text/html");
-
-        if(req.get("Request-URI").equals("/image.jpeg") ||req.get("Request-URI").equals("/image.png") || req.get("Request-URI").equals("/image.gif")) {
-            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
-            readFile(file);
-            messageHeader.put("Content-Length", String.valueOf(body.length));
-            messageHeader.put("Content-Type", "image/jpeg");
+            statusLine = String.valueOf(new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
         }
 
         messageHeader.put("Connection", "close");
+        resp.put("status-line", statusLine);
         resp.put("message-header", messageHeader);
         resp.put("message-body", body);
 
         return resp;
+    }
+
+    private Hashtable getMessageHeader(Hashtable req) {
+        Hashtable<String, Object> header = new Hashtable<String, Object>();
+        if(req.get("Request-URI").equals("/partial_content.txt")) {
+            header.put("Content-Length", "4");
+            header.put("Accept-Ranges", "bytes");
+            header.put("Content-Range", "bytes 0-4/3980");
+            header.put("Content-Type", "text/html");
+        } else {
+            header.put("Content-Length", String.valueOf(body.length));
+            header.put("Content-Type", "image/jpeg");
+        }
+        return header;
+    }
+
+    private String getStatusLine(Hashtable req) {
+        if(!req.get("Request-URI").equals("/partial_content.txt")) {
+            return String.valueOf(new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+        } else {
+            return String.valueOf(new ResponseStatusLine("206", req.get("HTTP-Version")).getStatusLine());
+        }
     }
 
     private void readFile(File file) throws IOException {

@@ -15,6 +15,8 @@ public class Main {
         try {
             port = Integer.parseInt(args[1]);
             rootDir = args[3];
-        } catch (ArrayIndexOutOfBoundsException e) {}
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Proper Usage: java -jar <your jar file> -p <port> -d <directory to serve>");
+        }
     }
 }

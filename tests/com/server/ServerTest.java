@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static junit.framework.Assert.assertEquals;
@@ -19,7 +20,7 @@ public class ServerTest {
         String rootDir = "/Users/takayuki/Coding/java/cob_spec/public";
 
         mockServerSocket = new MockServerSocket(5000);
-        server = new Server(5000,rootDir );
+        server = new Server(5000, rootDir);
         server.setServerSocket(mockServerSocket);
     }
 
@@ -37,7 +38,7 @@ public class ServerTest {
         assertEquals(4, mockServerSocket.listenMax);
     }
 
-    @Test public void serverIOException() {
+    @Test public void socketIOException() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         server.listen();

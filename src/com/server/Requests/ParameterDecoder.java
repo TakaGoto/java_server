@@ -24,8 +24,8 @@ public class ParameterDecoder {
         Matcher m = pattern.matcher(param);
         while(m.find()) {
             String hex = m.group().substring(1);
-            int chrcter = Integer.parseInt(hex, 16);
-            param = param.replaceAll("%" + hex, "\\" + String.valueOf((char)(chrcter)));
+            int character = Integer.parseInt(hex, 16);
+            param = param.replaceAll("%" + hex, "\\" + String.valueOf((char)(character)));
         }
 
         return param;

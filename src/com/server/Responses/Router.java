@@ -12,17 +12,7 @@ public class Router {
 
     public Router(String rootDir) {
         this.rootDir = rootDir;
-        routes = new Hashtable<String, Responder>();
-        routes.put("/redirect", new Redirect());
-        routes.put("/form", new PutPost());
-        routes.put("/parameters", new ParameterDecode());
-        routes.put("/", new Root());
-        routes.put("/text-file.txt", new FileHandler(rootDir));
-        routes.put("/partial_content.txt", new FileHandler(rootDir));
-        routes.put("/file1", new FileHandler(rootDir));
-        routes.put("/image.jpeg", new FileHandler(rootDir));
-        routes.put("/image.png", new FileHandler(rootDir));
-        routes.put("/image.gif", new FileHandler(rootDir));
+        setUpRoutes();
     }
 
     public Hashtable<String, Object> route(Hashtable<String, Object> req) throws IOException {
@@ -52,5 +42,19 @@ public class Router {
 
     public Hashtable<String, Responder> getRoutes() {
         return routes;
+    }
+
+    private void setUpRoutes() {
+        routes = new Hashtable<String, Responder>();
+        routes.put("/redirect", new Redirect());
+        routes.put("/form", new PutPost());
+        routes.put("/parameters", new ParameterDecode());
+        routes.put("/", new Root());
+        routes.put("/text-file.txt", new FileHandler(rootDir));
+        routes.put("/partial_content.txt", new FileHandler(rootDir));
+        routes.put("/file1", new FileHandler(rootDir));
+        routes.put("/image.jpeg", new FileHandler(rootDir));
+        routes.put("/image.png", new FileHandler(rootDir));
+        routes.put("/image.gif", new FileHandler(rootDir));
     }
 }
