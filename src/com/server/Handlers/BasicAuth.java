@@ -15,7 +15,7 @@ public class BasicAuth implements Responder {
         resp = new Hashtable<String, Object>();
         if(!req.containsKey("Authorization")) {
             addLogToBody(req);
-            resp.put("status-line", new ResponseStatusLine("401", req.get("HTTP-Version")).getStatusLine());
+            resp.put("status-line", ResponseStatusLine.get("401", req.get("HTTP-Version")));
         } else {
             resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
         }

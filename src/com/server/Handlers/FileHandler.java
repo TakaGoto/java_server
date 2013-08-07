@@ -20,14 +20,14 @@ public class FileHandler implements Responder {
         File file = new File(rootDir, ((String) req.get("Request-URI")).substring(1));
 
         if(!req.get("Method").equals("GET")) {
-            statusLine = String.valueOf(new ResponseStatusLine("405", req.get("HTTP-Version")).getStatusLine());
+            statusLine = ResponseStatusLine.get("405", req.get("HTTP-Version"));
             messageHeader.put("Allow", "GET");
         } else if(file.isFile()) {
             statusLine = getStatusLine(req);
             readFile(file);
             messageHeader = getMessageHeader(req);
         } else {
-            statusLine = String.valueOf(new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
+            statusLine = ResponseStatusLine.get("404", req.get("HTTP-Version"));
         }
 
         messageHeader.put("Connection", "close");
@@ -61,9 +61,9 @@ public class FileHandler implements Responder {
 
     private String getStatusLine(Hashtable req) {
         if(!req.get("Request-URI").equals("/partial_content.txt")) {
-            return String.valueOf(new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+            return ResponseStatusLine.get("200", req.get("HTTP-Version"));
         } else {
-            return String.valueOf(new ResponseStatusLine("206", req.get("HTTP-Version")).getStatusLine());
+            return ResponseStatusLine.get("206", req.get("HTTP-Version"));
         }
     }
 

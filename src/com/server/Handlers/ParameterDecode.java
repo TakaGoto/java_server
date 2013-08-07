@@ -19,7 +19,7 @@ public class ParameterDecode implements Responder {
 
         getParams((Hashtable<String, String>) req.get("Parameters"));
 
-        resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+        resp.put("status-line", ResponseStatusLine.get("200", req.get("HTTP-Version")));
         resp.put("message-body", this.body.getBytes(Charset.forName("utf-8")));
         messageHeader.put("Content-Length", String.valueOf(this.body.length()));
         messageHeader.put("Content-Type", "text/html");

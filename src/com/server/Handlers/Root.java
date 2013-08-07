@@ -18,12 +18,12 @@ public class Root implements Responder {
         Hashtable<String, String> messageHeader = new Hashtable<String, String>();
 
         if(req.containsValue("GET")) {
-            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+            resp.put("status-line", ResponseStatusLine.get("200", req.get("HTTP-Version")));
         } else if(req.get("Method").equals("OPTIONS")) {
-            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+            resp.put("status-line", ResponseStatusLine.get("200", req.get("HTTP-Version")));
             messageHeader.put("Allow", "HEAD,POST,OPTIONS,PUT,GET");
         } else {
-            resp.put("status-line", new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
+            resp.put("status-line", ResponseStatusLine.get("404", req.get("HTTP-Version")));
         }
             messageHeader.put("Content-Type", "text/html");
             messageHeader.put("Connection", "close");

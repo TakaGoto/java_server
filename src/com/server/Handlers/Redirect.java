@@ -16,7 +16,7 @@ public class Redirect implements Responder {
 
     public Hashtable<String, Object> respond(Hashtable<String, Object> req) {
         Hashtable<String, String> messageHeader = new Hashtable<String, String>();
-        resp.put("status-line", new ResponseStatusLine("301", req.get("HTTP-Version")).getStatusLine());
+        resp.put("status-line", ResponseStatusLine.get("301", req.get("HTTP-Version")));
         messageHeader.put("Location", "http://localhost:5000/");
         messageHeader.put("Content-Type", "text/html");
         messageHeader.put("Connection", "close");

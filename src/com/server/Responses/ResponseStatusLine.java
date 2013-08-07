@@ -46,4 +46,9 @@ public class ResponseStatusLine {
         status.put("404", "Not Found");
         status.put("405", "Method Not Allowed");
     }
+
+    public static String get(String status, Object httpVersion) {
+        ResponseStatusLine statusLine = new ResponseStatusLine(status, (String) httpVersion);
+        return statusLine.getStatusLine();
+    }
 }

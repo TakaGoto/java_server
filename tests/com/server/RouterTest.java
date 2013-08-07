@@ -102,4 +102,21 @@ public class RouterTest {
         router.addFile((String) request.get("Request-URI"));
         assertEquals(true, router.getRoutes().containsKey("/text-file.txt"));
     }
+
+    @Test public void checkRouterIsImage() {
+        request.put("Request-URI", "/image.jpeg");
+        request.put("Method", "GET");
+        router.addFile((String) request.get("Request-URI"));
+        assertEquals(true, router.getRoutes().containsKey("/image.jpeg"));
+    }
+
+    @Test public void routerAddRedirect() throws IOException {
+        router.addRedirect("/another_redirect");
+        request.put("Request-URI", "/another_redirect");
+        request.put("Method", "GET");
+        response = router.route(request);
+        header = (Hashtable<String, String>) response.get("message-header");
+        assertEquals("HTTP/1.0 301 Moved Permanently", response.get("status-line"));
+        assertEquals("http://localhost:5000/", header.get("Location"));
+    }
 }

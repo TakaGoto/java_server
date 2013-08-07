@@ -19,12 +19,11 @@ public class PutPost implements Responder {
 
         if(req.containsValue("POST") || req.containsValue("PUT")) {
             if(req.containsKey("Body")) {
-                Hashtable<String, String> body = (Hashtable<String, String>) req.get("Body");
                 echoBody((Hashtable<String, String>) req.get("Body"));
             }
         }
 
-        resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+        resp.put("status-line", ResponseStatusLine.get("200", req.get("HTTP-Version")));
         resp.put("message-body", this.body.getBytes(Charset.forName("utf-8")));
         messageHeader.put("Content-Length", String.valueOf(this.body.length()));
         messageHeader.put("Content-Type", "text/html");

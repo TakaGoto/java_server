@@ -46,7 +46,7 @@ public class Router {
     private void setUpRoutes() {
         BasicAuth basicAuth = new BasicAuth();
         routes = new Hashtable<String, Responder>();
-        routes.put("/redirect", new Redirect());
+        addRedirect("/redirect");
         routes.put("/form", new PutPost());
         routes.put("/parameters", new ParameterDecode());
         routes.put("/", new Root());
@@ -62,7 +62,12 @@ public class Router {
         File file = new File(rootDir, URI.substring(1));
         return file.isFile();
     }
+
     public void addFile(String URI) {
-         routes.put(URI, new FileHandler(rootDir));
+        routes.put(URI, new FileHandler(rootDir));
+    }
+
+    public void addRedirect(String URI) {
+        routes.put(URI, new Redirect());
     }
 }

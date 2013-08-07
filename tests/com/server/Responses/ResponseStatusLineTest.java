@@ -72,4 +72,8 @@ public class ResponseStatusLineTest {
         statusLine = new ResponseStatusLine("401");
         assertEquals("Unauthorized", statusLine.getReasonPhrase());
     }
+
+    @Test public void returnsStatusLine() {
+        assertEquals("HTTP/1.1 200 OK", ResponseStatusLine.get("200", "HTTP/1.1"));
+    }
 }
