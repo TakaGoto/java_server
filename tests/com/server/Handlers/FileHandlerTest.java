@@ -90,7 +90,22 @@ public class FileHandlerTest {
         assertEquals(true, Arrays.equals(getFile(newFile), (byte[]) resp.get("message-body")));
     }
 
-    @Test public void handleFile() {}
+    @Test public void findImageType() {
+        assertEquals("image/jpeg", file.findImageType("image.jpeg"));
+    }
+
+    @Test public void findPng() {
+        assertEquals("image/png", file.findImageType("image.png"));
+    }
+
+    @Test public void findGif() {
+        assertEquals("image/gif", file.findImageType("image.gif"));
+    }
+
+    @Test public void addImageTypes() {
+        file.addFileType("jpg", "image/jpg");
+        assertEquals("image/jpg", file.findImageType("image.jpg"));
+    }
 
     public byte[] getFile(File file) throws IOException {
         byte[] newBody = new byte[(int) file.length()];

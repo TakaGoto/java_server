@@ -8,10 +8,12 @@ import java.util.Hashtable;
 public class FileHandler implements Responder {
     private byte[] body = new byte[0];
     private String rootDir;
-    Hashtable<String, Object> resp = new Hashtable<String, Object>();
+    private Hashtable<String, Object> resp = new Hashtable<String, Object>();
+    private Hashtable<String, String> fileTypes = new Hashtable<String, String>();
 
     public FileHandler(String rootDir) {
         this.rootDir = rootDir;
+        generateBasicFileTypes();
     }
 
     public Hashtable<String, Object> respond(Hashtable<String, Object> req) throws IOException {
@@ -38,7 +40,7 @@ public class FileHandler implements Responder {
         return resp;
     }
 
-    private Hashtable getMessageHeader(Hashtable req) {
+    private Hashtable<String, Object> getMessageHeader(Hashtable req) {
         Hashtable<String, Object> header = new Hashtable<String, Object>();
         if(req.get("Request-URI").equals("/partial_content.txt")) {
             String[] range = getRange((String) req.get("Range"));
@@ -48,7 +50,7 @@ public class FileHandler implements Responder {
             header.put("Content-Type", "text/html");
         } else {
             header.put("Content-Length", String.valueOf(body.length));
-            header.put("Content-Type", "image/jpeg");
+            header.put("Content-Type", findImageType((String) req.get("Request-URI")));
         }
         return header;
     }
@@ -59,7 +61,7 @@ public class FileHandler implements Responder {
         return newRange;
     }
 
-    private String getStatusLine(Hashtable req) {
+    private String getStatusLine(Hashtable<String, Object> req) {
         if(!req.get("Request-URI").equals("/partial_content.txt")) {
             return ResponseStatusLine.get("200", req.get("HTTP-Version"));
         } else {
@@ -77,5 +79,22 @@ public class FileHandler implements Responder {
 
     public String getRootDir() {
         return rootDir;
+    }
+
+    public String findImageType(String URI) {
+        String[] fileType = URI.split("\\.");
+        if(fileType.length == 1) return fileTypes.get("txt");
+        else return String.valueOf(fileTypes.get(fileType[1]));
+    }
+
+    private void generateBasicFileTypes() {
+        fileTypes.put("jpeg", "image/jpeg");
+        fileTypes.put("gif", "image/gif");
+        fileTypes.put("png", "image/png");
+        fileTypes.put("txt", "text/html");
+    }
+
+    public void addFileType(String fileType, String nameOfType) {
+        fileTypes.put(fileType, nameOfType);
     }
 }
