@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,5 +58,16 @@ public class RootTest {
 
     @Test public void rootBodyContainsTextFile() {
         assertTrue(root.getBody().contains("text-file.txt"));
+    }
+
+    @Test public void optionsReturnsAllow() {
+        req.put("Request-URI", "/method_options");
+        req.put("Method", "OPTIONS");
+        req.put("HTTP-Version", "HTTP/1.0");
+        req.put("Host", "http://localhost:5000");
+        Hashtable<String, Object> response = root.respond(req);
+        Hashtable header = (Hashtable) response.get("message-header");
+        String allow = (String) header.get("Allow");
+        Assert.assertTrue(allow.contains("HEAD,POST,OPTIONS,PUT,GET"));
     }
 }

@@ -67,4 +67,9 @@ public class ResponseStatusLineTest {
         statusLine.addStatus("900", "testing");
         assertEquals("testing", statusLine.getReasonPhrase());
     }
+
+    @Test public void returnsFourOhOne() {
+        statusLine = new ResponseStatusLine("401");
+        assertEquals("Unauthorized", statusLine.getReasonPhrase());
+    }
 }

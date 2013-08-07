@@ -35,6 +35,7 @@ public class FileHandlerTest {
         req.put("Request-URI", "/partial_content.txt");
         req.put("HTTP-Version", "HTTP/1.0");
         req.put("Method", "GET");
+        req.put("Range", "bytes=0-10");
         resp = file.respond(req);
         File newFile = new File(file.getRootDir() + "/partial_content.txt");
         assertEquals("HTTP/1.0 206 Partial Content", resp.get("status-line"));
@@ -43,11 +44,23 @@ public class FileHandlerTest {
     }
 
     @Test public void testFourOhFour() throws IOException {
-        req.put("Request-URI", "/notAvailable.txt");
+        req.put("Request-URI", "/nowAvailable.txt");
         req.put("HTTP-Version", "HTTP/1.0");
         req.put("Method", "GET");
+        req.put("Range", "bytes=0-4");
         resp = file.respond(req);
         assertEquals("HTTP/1.0 404 Not Found", resp.get("status-line"));
+    }
+
+    @Test public void testPartialContentFieldRange() throws IOException {
+        req.put("Request-URI", "/partial_content.txt");
+        req.put("HTTP-Version", "HTTP/1.0");
+        req.put("Method", "GET");
+        req.put("Range", "bytes=0-4");
+        resp = file.respond(req);
+        Hashtable<String, String> header = (Hashtable<String, String>) resp.get("message-header");
+        assertEquals("bytes 0-4", header.get("Content-Range"));
+        assertEquals("4", header.get("Content-Length"));
     }
 
     @Test public void testJPEG() throws IOException {

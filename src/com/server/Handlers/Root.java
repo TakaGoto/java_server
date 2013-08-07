@@ -1,5 +1,6 @@
 package com.server.Handlers;
 
+import com.server.HtmlGenerator;
 import com.server.Responses.ResponseStatusLine;
 
 import java.nio.charset.Charset;
@@ -14,12 +15,16 @@ public class Root implements Responder {
     }
 
     public Hashtable<String, Object> respond(Hashtable<String, Object> req) {
+        Hashtable<String, String> messageHeader = new Hashtable<String, String>();
+
         if(req.containsValue("GET")) {
             resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+        } else if(req.get("Method").equals("OPTIONS")) {
+            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+            messageHeader.put("Allow", "HEAD,POST,OPTIONS,PUT,GET");
         } else {
             resp.put("status-line", new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
         }
-            Hashtable<String, String> messageHeader = new Hashtable<String, String>();
             messageHeader.put("Content-Type", "text/html");
             messageHeader.put("Connection", "close");
             resp.put("message-header", messageHeader);
@@ -28,15 +33,7 @@ public class Root implements Responder {
     }
 
     private void generateBody() {
-        body = "<html><head><title></title></head><body>";
-        body += "<a href=\"/file1\">file1</a></br>";
-        body += "<a href=\"/file2\">file2</a></br>";
-        body += "<a href=\"/image.gif\">image.gif</a></br>";
-        body += "<a href=\"/image.jpeg\">image.jpeg</a></br>";
-        body += "<a href=\"/image.png\">image.png</a></br>";
-        body += "<a href=\"/text-file.txt\">text-file.txt</a></br>";
-        body += "<a href=\"/partial_content.txt\">partial_content.txt</a></br>";
-        body += "</body></html>";
+        body = HtmlGenerator.generateList();
     }
 
     public String getBody() {

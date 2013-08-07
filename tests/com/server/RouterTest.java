@@ -88,6 +88,10 @@ public class RouterTest {
         assertEquals("", body);
     }
 
+    @Test public void getRootDirectory() {
+        assertEquals("/Users/takayuki/Coding/java/cob_spec/public\n", router.getDir());
+    }
+
     @Test public void routerHasPartialContent() {
         assertEquals(true, router.getRoutes().containsKey("/partial_content.txt"));
     }

@@ -15,7 +15,7 @@ public class FileHandler implements Responder {
     }
 
     public Hashtable<String, Object> respond(Hashtable<String, Object> req) throws IOException {
-        Hashtable<String, String> messageHeader = new Hashtable<String, String>();
+        Hashtable messageHeader = new Hashtable<String, String>();
         String statusLine;
         File file = new File(rootDir, ((String) req.get("Request-URI")).substring(1));
 
@@ -41,15 +41,22 @@ public class FileHandler implements Responder {
     private Hashtable getMessageHeader(Hashtable req) {
         Hashtable<String, Object> header = new Hashtable<String, Object>();
         if(req.get("Request-URI").equals("/partial_content.txt")) {
-            header.put("Content-Length", "4");
+            String[] range = getRange((String) req.get("Range"));
+            header.put("Content-Range", "bytes " + range[0] + "-" + range[1]);
+            header.put("Content-Length", range[1]);
             header.put("Accept-Ranges", "bytes");
-            header.put("Content-Range", "bytes 0-4/3980");
             header.put("Content-Type", "text/html");
         } else {
             header.put("Content-Length", String.valueOf(body.length));
             header.put("Content-Type", "image/jpeg");
         }
         return header;
+    }
+
+    private String[] getRange(String range) {
+        String[] newRange = range.split("=");
+        newRange = newRange[1].split("-");
+        return newRange;
     }
 
     private String getStatusLine(Hashtable req) {

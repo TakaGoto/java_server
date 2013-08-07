@@ -32,10 +32,6 @@ public class Router {
         }
     }
 
-    public void setDir(String rootDir) {
-        this.rootDir = rootDir;
-    }
-
     public String getDir() {
         return rootDir;
     }
@@ -45,6 +41,7 @@ public class Router {
     }
 
     private void setUpRoutes() {
+        BasicAuth basicAuth = new BasicAuth();
         routes = new Hashtable<String, Responder>();
         routes.put("/redirect", new Redirect());
         routes.put("/form", new PutPost());
@@ -56,5 +53,10 @@ public class Router {
         routes.put("/image.jpeg", new FileHandler(rootDir));
         routes.put("/image.png", new FileHandler(rootDir));
         routes.put("/image.gif", new FileHandler(rootDir));
+        routes.put("/method_options", new Root());
+        routes.put("/logs", basicAuth);
+        routes.put("/log", basicAuth);
+        routes.put("/these", basicAuth);
+        routes.put("/requests", basicAuth);
     }
 }

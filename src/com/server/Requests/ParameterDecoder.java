@@ -27,7 +27,6 @@ public class ParameterDecoder {
             int character = Integer.parseInt(hex, 16);
             param = param.replaceAll("%" + hex, "\\" + String.valueOf((char)(character)));
         }
-
         return param;
     }
 }
