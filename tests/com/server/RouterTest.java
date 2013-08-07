@@ -92,11 +92,14 @@ public class RouterTest {
         assertEquals("/Users/takayuki/Coding/java/cob_spec/public\n", router.getDir());
     }
 
-    @Test public void routerHasPartialContent() {
-        assertEquals(true, router.getRoutes().containsKey("/partial_content.txt"));
-    }
-
     @Test public void routerHasParameterDecode() {
         assertEquals(true, router.getRoutes().containsKey("/parameters"));
+    }
+
+    @Test public void checkRouterIsFile() {
+        request.put("Request-URI", "/text-file.txt");
+        request.put("Method", "GET");
+        router.addFile((String) request.get("Request-URI"));
+        assertEquals(true, router.getRoutes().containsKey("/text-file.txt"));
     }
 }
