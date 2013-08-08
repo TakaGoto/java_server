@@ -11,15 +11,16 @@ public class ParameterDecoder {
     public static Hashtable<String, String> decode(String params) throws IOException {
         decodedParams = new Hashtable<String, String>();
         for(String param: params.split("&")) {
+            param = replacePlusOperator(param);
             String[] splitParam = param.split("=");
             if(splitParam.length == 2) {
-                decodedParams.put(splitParam[0], replaceHex(splitParam[1]));
+                decodedParams.put(splitParam[0], findEncoded(splitParam[1]) + "\r\n");
             }
         }
         return decodedParams;
     }
 
-    private static String replaceHex(String param) {
+    private static String findEncoded(String param) {
         Pattern pattern = Pattern.compile("%..");
         Matcher m = pattern.matcher(param);
         while(m.find()) {
@@ -28,5 +29,9 @@ public class ParameterDecoder {
             param = param.replaceAll("%" + hex, "\\" + String.valueOf((char)(character)));
         }
         return param;
+    }
+
+    private static String replacePlusOperator(String params) {
+        return params.replace("+", " ");
     }
 }

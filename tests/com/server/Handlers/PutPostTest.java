@@ -1,6 +1,5 @@
 package com.server.Handlers;
 
-import com.server.HtmlGenerator;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,7 +9,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class PutPostTest {
     PutPost putPost;
-    String htmlBody = HtmlGenerator.echoBody("data = cosby");
+    String htmlBody = "data = cosby\r\n";
     Hashtable<String, Object> req = new Hashtable<String, Object>();
     Hashtable<String, Object> resp = new Hashtable<String, Object>();
 

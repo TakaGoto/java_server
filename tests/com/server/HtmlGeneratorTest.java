@@ -6,6 +6,7 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 
 public class HtmlGeneratorTest {
+    HtmlGenerator htmlGenerator = new HtmlGenerator();
     @Test public void hasDefaultHTML() {
         assertEquals("<html><head><title></title></head><body> Empty </body></html>", HtmlGenerator.getDefaultHTML());
     }

@@ -41,17 +41,23 @@ public class FileHandler implements Responder {
     }
 
     private Hashtable<String, Object> getMessageHeader(Hashtable req) {
-        Hashtable<String, Object> header = new Hashtable<String, Object>();
-        if(req.get("Request-URI").equals("/partial_content.txt")) {
-            String[] range = getRange((String) req.get("Range"));
-            header.put("Content-Range", "bytes " + range[0] + "-" + range[1]);
-            header.put("Content-Length", range[1]);
-            header.put("Accept-Ranges", "bytes");
-            header.put("Content-Type", "text/html");
+        Hashtable header = new Hashtable<String, Object>();
+        if(req.containsKey("Range")) {
+            header = handlePartial(req);
         } else {
             header.put("Content-Length", String.valueOf(body.length));
             header.put("Content-Type", findImageType((String) req.get("Request-URI")));
         }
+        return header;
+    }
+
+    private Hashtable handlePartial(Hashtable req) {
+        Hashtable<String, Object> header = new Hashtable<String, Object>();
+        String[] range = getRange((String) req.get("Range"));
+        header.put("Content-Range", "bytes " + range[0] + "-" + range[1]);
+        header.put("Content-Length", range[1]);
+        header.put("Accept-Ranges", "bytes");
+        header.put("Content-Type", findImageType((String) req.get("Request-URI")));
         return header;
     }
 

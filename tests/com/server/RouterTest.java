@@ -1,6 +1,9 @@
 package com.server;
 
+import com.server.Handlers.BasicAuth;
+import com.server.Handlers.Responder;
 import com.server.Responses.Router;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,7 +63,7 @@ public class RouterTest {
         request.put("Method", "POST");
         response = router.route(request);
         String newBody = new String((byte[]) response.get("message-body"), "UTF-8");
-        assertEquals("<html><head><title></title></head><body> data = cosby </body></html>", newBody);
+        assertEquals("data = cosby\r\n", newBody);
     }
 
     @Test public void FourOhFiveMethodNotAllowed() throws IOException {
@@ -85,7 +88,7 @@ public class RouterTest {
         request.remove("Body");
         response = router.route(request);
         String body = new String((byte[]) response.get("message-body"), "UTF-8");
-        assertEquals("", body);
+        assertEquals("404", body);
     }
 
     @Test public void getRootDirectory() {

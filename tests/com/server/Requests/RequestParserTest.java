@@ -53,7 +53,7 @@ public class RequestParserTest {
         req = new MyRequestParser(inputStream);
         Hashtable<String, String> params = (Hashtable<String, String>) req.getStatusLine().get("Parameters");
         assertEquals("/parameters", req.getStatusLine().get("Request-URI"));
-        assertEquals("world", params.get("hello"));
-        assertEquals("cruelWorld", params.get("second_variable"));
+        assertEquals("world\r\n", params.get("hello"));
+        assertEquals("cruelWorld\r\n", params.get("second_variable"));
     }
 }

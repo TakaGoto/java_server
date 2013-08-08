@@ -16,8 +16,8 @@ public class Router {
         setUpRoutes();
     }
 
-    public Hashtable<String, Object> route(Hashtable<String, Object> req) throws IOException {
-        Hashtable<String, Object> response = new Hashtable<String, Object>();
+    public Hashtable route(Hashtable<String, Object> req) throws IOException {
+        Hashtable response = new Hashtable<String, Object>();
         String URI = (String) req.get("Request-URI");
 
         if(uriIsFile(URI)) addFile(URI);
@@ -26,13 +26,29 @@ public class Router {
             Responder responder = routes.get(URI);
             response = responder.respond(req);
         } else {
-            Hashtable<String, Object> header = new Hashtable<String, Object>();
-            response.put("status-line", new ResponseStatusLine("404", req.get("HTTP-Version")).getStatusLine());
-            header.put("Content-Type", "text/html");
-            response.put("message-header", header);
-            response.put("message-body", "".getBytes(Charset.forName("utf-8")));
+            response = generateFourOhFourResponse(req, response);
         }
         return response;
+    }
+
+    private Hashtable generateFourOhFourResponse(Hashtable req, Hashtable response) {
+        Hashtable<String, Object> header = new Hashtable<String, Object>();
+        response.put("status-line", ResponseStatusLine.get("404", req.get("HTTP-Version")));
+        response.put("message-header", header);
+        response.put("message-body", "404".getBytes(Charset.forName("utf-8")));
+        return response;
+    }
+    private boolean uriIsFile(String URI) {
+        File file = new File(rootDir, URI.substring(1));
+        return file.isFile();
+    }
+
+    public void addFile(String URI) {
+        routes.put(URI, new FileHandler(rootDir));
+    }
+
+    public void addRedirect(String URI) {
+        routes.put(URI, new Redirect());
     }
 
     public String getDir() {
@@ -56,18 +72,5 @@ public class Router {
         routes.put("/log", basicAuth);
         routes.put("/these", basicAuth);
         routes.put("/requests", basicAuth);
-    }
-
-    private boolean uriIsFile(String URI) {
-        File file = new File(rootDir, URI.substring(1));
-        return file.isFile();
-    }
-
-    public void addFile(String URI) {
-        routes.put(URI, new FileHandler(rootDir));
-    }
-
-    public void addRedirect(String URI) {
-        routes.put(URI, new Redirect());
     }
 }

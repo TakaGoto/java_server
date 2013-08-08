@@ -39,10 +39,10 @@ public class PutPost implements Responder {
     private void echoBody(Hashtable body) {
         String newBody = "";
         for(Object key: body.keySet()) {
-            if(key.equals("data")) {
-                newBody = newBody.concat(key + " = " + body.get(key));
+            if(!key.equals("length")) {
+                newBody = newBody.concat(key + " = " + body.get(key) + "\r\n");
             }
         }
-        this.body = HtmlGenerator.echoBody(newBody);
+        this.body = newBody;
     }
 }
