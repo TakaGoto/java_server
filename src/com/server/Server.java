@@ -14,10 +14,14 @@ public class Server {
     private IServerSockets serverSocket;
     private ISockets clientSocket;
     private Router router;
+    private int port;
+    private String rootDir;
     private ExecutorService exec = Executors.newCachedThreadPool();
     RequestHandler reqHandler;
 
     public Server(int port, String rootDir) {
+        this.rootDir = rootDir;
+        this.port = port;
         serverSocket = new MyServerSocket(port);
         router = new Router(rootDir);
     }
@@ -44,5 +48,9 @@ public class Server {
 
     public void setServerSocket(IServerSockets serverSocket) {
         this.serverSocket = serverSocket;
+    }
+
+    public ExecutorService getExec() {
+        return exec;
     }
 }

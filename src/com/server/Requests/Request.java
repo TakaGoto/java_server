@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 public class Request {
-    RequestParsers parser;
+    IRequestParsers parser;
     Hashtable<String, Object> req = new Hashtable<String, Object>();
 
-    public Request(RequestParsers parser) throws IOException {
+    public Request(IRequestParsers parser) throws IOException {
         this.parser = parser;
         getStatusLine();
         getMessageHeader();

@@ -10,6 +10,11 @@ public class MockSocket implements ISockets {
     public ByteArrayInputStream in;
     public int closedCount = 0;
 
+    public MockSocket(){}
+
+    public MockSocket(String localhost, int port) {
+    }
+
     public void close() {
         closedCount++;
     }

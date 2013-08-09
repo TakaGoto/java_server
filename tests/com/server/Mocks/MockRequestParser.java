@@ -1,12 +1,12 @@
 package com.server.Mocks;
 
-import com.server.Requests.RequestParsers;
+import com.server.Requests.IRequestParsers;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Hashtable;
 
-public class MockRequestParser implements RequestParsers{
+public class MockRequestParser implements IRequestParsers {
     Hashtable<String, Object> statusLine = new Hashtable<String, Object>();
     Hashtable<String, Object> messageHeader = new Hashtable<String, Object>();
     Hashtable<String, Object> messageBody = new Hashtable<String, Object>();

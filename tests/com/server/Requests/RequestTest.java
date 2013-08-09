@@ -1,8 +1,7 @@
 package com.server.Requests;
 
 import com.server.Mocks.MockRequestParser;
-import com.server.Requests.Request;
-import com.server.Requests.RequestParsers;
+import com.server.Requests.IRequestParsers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +15,7 @@ import static junit.framework.Assert.assertEquals;
 public class RequestTest {
     String test;
     Request req;
-    RequestParsers parser;
+    IRequestParsers parser;
     ByteArrayInputStream inputStream;
 
     @Before public void init() throws IOException {
@@ -43,7 +42,6 @@ public class RequestTest {
     }
 
     @Test public void hasAllResponseFields() {
-        Hashtable<String, Object> request = req.getReq();
         Hashtable<String, String> body = (Hashtable<String, String>) req.getField("Body");
         assertEquals("cosby", body.get("data"));
         assertEquals("61", req.getField("Content-Length"));

@@ -7,7 +7,7 @@ import com.server.Sockets.ISockets;
 import java.io.IOException;
 
 public class RequestHandler implements Runnable {
-    private RequestParsers parser;
+    private IRequestParsers parser;
     private Response resp = new Response();
     private Request req;
     private Router router;

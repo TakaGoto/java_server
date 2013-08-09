@@ -3,7 +3,7 @@ package com.server.Requests;
 import java.io.*;
 import java.util.Hashtable;
 
-public class MyRequestParser implements RequestParsers {
+public class MyRequestParser implements IRequestParsers {
     Hashtable<String, Object> statusLine = new Hashtable<String, Object>();
     Hashtable<String, Object> messageHeader = new Hashtable<String, Object>();
     Hashtable<String, Object> messageBody = new Hashtable<String, Object>();
