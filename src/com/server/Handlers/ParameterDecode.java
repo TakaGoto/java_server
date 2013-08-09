@@ -39,7 +39,7 @@ public class ParameterDecode implements Responder {
     private void getParams(Hashtable body) {
         String newBody = " ";
         for(Object key: body.keySet()) {
-            newBody = newBody.concat(key + " = " + body.get(key) + "\n");
+            newBody = newBody.concat(key + " = " + body.get(key) + "</br>");
         }
         echoBody(newBody);
     }

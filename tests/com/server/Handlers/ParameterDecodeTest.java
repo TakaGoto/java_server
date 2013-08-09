@@ -23,8 +23,8 @@ public class ParameterDecodeTest {
         req.put("Body", body);
         resp = parameterDecode.respond(req);
         String newBody = new String((byte[]) resp.get("message-body"), "UTF-8");
-        assertEquals("<html><head><title></title></head><body>  hello = world\n" +
-                "cruel = life\n" +
+        assertEquals("<html><head><title></title></head><body>  hello = world</br>" +
+                "cruel = life</br>" +
                 " </body></html>", newBody);
     }
 }
