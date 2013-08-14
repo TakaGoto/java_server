@@ -73,4 +73,8 @@ public class Router {
         routes.put("/these", basicAuth);
         routes.put("/requests", basicAuth);
     }
+
+    public void addRoute(String URI, Responder responder) {
+        routes.put(URI, responder);
+    }
 }

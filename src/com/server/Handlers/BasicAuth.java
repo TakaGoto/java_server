@@ -17,7 +17,7 @@ public class BasicAuth implements Responder {
             addLogToBody(req);
             resp.put("status-line", ResponseStatusLine.get("401", req.get("HTTP-Version")));
         } else {
-            resp.put("status-line", new ResponseStatusLine("200", req.get("HTTP-Version")).getStatusLine());
+            resp.put("status-line", ResponseStatusLine.get("200", req.get("HTTP-Version")));
         }
 
         resp.put("message-header", messageHeader);

@@ -1,5 +1,6 @@
 package com.server;
 
+import com.server.Handlers.Redirect;
 import com.server.Mocks.MockRequestHandler;
 import com.server.Mocks.MockServerSocket;
 import com.server.Mocks.MockSocket;
@@ -68,12 +69,10 @@ public class ServerTest {
         assertEquals(4, mockServerSocket.listenMax);
     }
 
-//    @Test public void parseArgs() {
-//        String[] args = new String[]{"2"};
-//        Server newServer = new Server(5000, "/public", args);
-//        newServer.setServerSocket(mockServerSocket);
-//        assertEquals(5000, newServer.getPort());
-//    }
+    @Test public void addRouters() {
+        server.mount("/test", new Redirect());
+        assertEquals(true, server.router.getRoutes().containsKey("/test"));
+    }
 
     private void attemptMultipleConnect() throws IOException {
         new Thread(new Runnable() {

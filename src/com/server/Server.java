@@ -1,5 +1,6 @@
 package com.server;
 
+import com.server.Handlers.Responder;
 import com.server.Requests.RequestHandler;
 import com.server.Responses.Router;
 import com.server.Sockets.IServerSockets;
@@ -13,7 +14,7 @@ import java.util.concurrent.Executors;
 public class Server {
     private IServerSockets serverSocket;
     private ISockets clientSocket;
-    private Router router;
+    protected Router router;
     private int port;
     private String rootDir;
     private ExecutorService exec = Executors.newCachedThreadPool();
@@ -22,8 +23,7 @@ public class Server {
     public Server(int port, String rootDir) {
         this.rootDir = rootDir;
         this.port = port;
-        serverSocket = new MyServerSocket(port);
-        router = new Router(rootDir);
+        setUpServer();
     }
 
     public int getPort() {
@@ -52,5 +52,14 @@ public class Server {
 
     public ExecutorService getExec() {
         return exec;
+    }
+
+    public void mount(String URI, Responder responder) {
+        router.addRoute(URI, responder);
+    }
+
+    private void setUpServer() {
+        serverSocket = new MyServerSocket(port);
+        router = new Router(rootDir);
     }
 }
