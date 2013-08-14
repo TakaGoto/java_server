@@ -61,7 +61,7 @@ public class ServerTest {
         server.listen();
 
         attemptMultipleConnect();
-        server.getExec().shutdownNow();
+        server.serverHandler.getExec().shutdownNow();
 
         assertEquals(4, mockServerSocket.listenMax);
     }
