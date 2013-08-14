@@ -8,19 +8,16 @@ import java.nio.charset.Charset;
 import java.util.Hashtable;
 
 public class Router {
-    private Hashtable<String, Responder> routes;
+    private Hashtable<String, Responder> routes = new Hashtable<String, Responder>();
     private String rootDir = null;
 
     public Router(String rootDir) {
         this.rootDir = rootDir;
-        setUpRoutes();
     }
 
     public Hashtable route(Hashtable<String, Object> req) throws IOException {
         Hashtable response = new Hashtable<String, Object>();
         String URI = (String) req.get("Request-URI");
-
-        if(uriIsFile(URI)) addFile(URI);
 
         if(routes.containsKey(URI)) {
             Responder responder = routes.get(URI);
@@ -43,35 +40,12 @@ public class Router {
         return file.isFile();
     }
 
-    public void addFile(String URI) {
-        routes.put(URI, new FileHandler(rootDir));
-    }
-
-    public void addRedirect(String URI) {
-        routes.put(URI, new Redirect());
-    }
-
     public String getDir() {
         return rootDir;
     }
 
     public Hashtable<String, Responder> getRoutes() {
         return routes;
-    }
-
-    private void setUpRoutes() {
-        BasicAuth basicAuth = new BasicAuth();
-        routes = new Hashtable<String, Responder>();
-        addRedirect("/redirect");
-        routes.put("/form", new PutPost());
-        routes.put("/parameters", new ParameterDecode());
-        routes.put("/", new Root());
-        routes.put("/file1", new FileHandler(rootDir));
-        routes.put("/method_options", new Root());
-        routes.put("/logs", basicAuth);
-        routes.put("/log", basicAuth);
-        routes.put("/these", basicAuth);
-        routes.put("/requests", basicAuth);
     }
 
     public void addRoute(String URI, Responder responder) {

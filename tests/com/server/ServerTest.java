@@ -1,18 +1,15 @@
 package com.server;
 
-import com.server.Handlers.Redirect;
+import com.server.Handlers.Responder;
 import com.server.Mocks.MockRequestHandler;
+import com.server.Mocks.MockResponder;
 import com.server.Mocks.MockServerSocket;
-import com.server.Mocks.MockSocket;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 import static junit.framework.Assert.assertEquals;
@@ -70,7 +67,8 @@ public class ServerTest {
     }
 
     @Test public void addRouters() {
-        server.mount("/test", new Redirect());
+        Responder mockResponder = new MockResponder();
+        server.mount("/test", mockResponder);
         assertEquals(true, server.router.getRoutes().containsKey("/test"));
     }
 

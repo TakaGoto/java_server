@@ -1,9 +1,8 @@
 package com.server;
 
-import com.server.Handlers.BasicAuth;
 import com.server.Handlers.Responder;
+import com.server.Mocks.MockResponder;
 import com.server.Responses.Router;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +17,7 @@ public class RouterTest {
     Hashtable<String, String> body = new Hashtable<String, String>();
     Hashtable<String, Object> response;
     Hashtable<String, String> header;
+    Responder mockResponder = new MockResponder();
 
     @Before public void init() {
         router = new Router("/Users/takayuki/Coding/java/cob_spec/public\n");
@@ -36,6 +36,7 @@ public class RouterTest {
     }
 
     @Test public void addRoute() throws IOException {
+        router.addRoute("/", mockResponder);
         request.put("Request-URI", "/");
         request.put("Method", "GET");
         response = router.route(request);
@@ -43,6 +44,7 @@ public class RouterTest {
     }
 
     @Test public void routeFormShouldBeTwoHundred() throws IOException {
+        router.addRoute("/form", mockResponder);
         request.put("Request-URI", "/form");
         request.put("Method", "GET");
         response = router.route(request);
@@ -50,6 +52,7 @@ public class RouterTest {
     }
 
     @Test public void routeRedirectsToRoot() throws IOException {
+        router.addRoute("/redirect", mockResponder);
         request.put("Request-URI", "/redirect");
         request.put("Method", "GET");
         response = router.route(request);
@@ -59,6 +62,7 @@ public class RouterTest {
     }
 
     @Test public void postDataToBody() throws IOException {
+        router.addRoute("/form", mockResponder);
         request.put("Request-URI", "/form");
         request.put("Method", "POST");
         response = router.route(request);
@@ -67,6 +71,7 @@ public class RouterTest {
     }
 
     @Test public void FourOhFiveMethodNotAllowed() throws IOException {
+        router.addRoute("/file1", mockResponder);
         request.put("Request-URI", "/file1");
         request.put("Method", "PUT");
         response = router.route(request);
@@ -74,6 +79,7 @@ public class RouterTest {
     }
 
     @Test public void postRequestWithoutBody() throws IOException {
+        router.addRoute("/file1", mockResponder);
         request.put("Request-URI", "/file1");
         request.put("Method", "POST");
         request.remove("Body");
@@ -96,30 +102,7 @@ public class RouterTest {
     }
 
     @Test public void routerHasParameterDecode() {
+        router.addRoute("/parameters", mockResponder);
         assertEquals(true, router.getRoutes().containsKey("/parameters"));
-    }
-
-    @Test public void checkRouterIsFile() {
-        request.put("Request-URI", "/text-file.txt");
-        request.put("Method", "GET");
-        router.addFile((String) request.get("Request-URI"));
-        assertEquals(true, router.getRoutes().containsKey("/text-file.txt"));
-    }
-
-    @Test public void checkRouterIsImage() {
-        request.put("Request-URI", "/image.jpeg");
-        request.put("Method", "GET");
-        router.addFile((String) request.get("Request-URI"));
-        assertEquals(true, router.getRoutes().containsKey("/image.jpeg"));
-    }
-
-    @Test public void routerAddRedirect() throws IOException {
-        router.addRedirect("/another_redirect");
-        request.put("Request-URI", "/another_redirect");
-        request.put("Method", "GET");
-        response = router.route(request);
-        header = (Hashtable<String, String>) response.get("message-header");
-        assertEquals("HTTP/1.0 301 Moved Permanently", response.get("status-line"));
-        assertEquals("http://localhost:5000/", header.get("Location"));
     }
 }
