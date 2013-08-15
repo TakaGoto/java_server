@@ -1,6 +1,7 @@
 package com.server.Mocks;
 
 import com.server.Requests.IRequestParsers;
+import com.server.Requests.MessageHeader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +29,7 @@ public class MockRequestParser implements IRequestParsers {
         return statusLine;
     }
 
-    public Hashtable<String, Object> getMessageHeader() {
+    public Hashtable getMessageHeader() {
         messageHeader.put("Content-Length", "61");
         return messageHeader;
     }

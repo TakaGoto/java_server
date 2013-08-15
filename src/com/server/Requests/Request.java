@@ -2,10 +2,11 @@ package com.server.Requests;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Map;
 
 public class Request {
     IRequestParsers parser;
-    Hashtable<String, Object> req = new Hashtable<String, Object>();
+    Hashtable req = new Hashtable();
 
     public Request(IRequestParsers parser) throws IOException {
         this.parser = parser;

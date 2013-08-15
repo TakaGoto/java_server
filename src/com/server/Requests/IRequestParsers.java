@@ -7,6 +7,6 @@ public interface IRequestParsers {
     public void parseStatusLine() throws IOException;
     public void parseMessageHeader() throws IOException;
     public Hashtable<String, Object> getStatusLine();
-    public Hashtable<String, Object> getMessageHeader();
+    public Hashtable getMessageHeader();
     public Hashtable<String, Object> getMessageBody();
 }

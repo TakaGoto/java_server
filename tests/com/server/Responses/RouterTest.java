@@ -1,4 +1,4 @@
-package com.server;
+package com.server.Responses;
 
 import com.server.Handlers.Responder;
 import com.server.Mocks.MockResponder;

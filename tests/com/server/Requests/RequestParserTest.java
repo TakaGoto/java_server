@@ -43,7 +43,7 @@ public class RequestParserTest {
     }
 
     @Test public void parseMessageHeader() {
-        Hashtable<String, Object> header = req.getMessageHeader();
+        Hashtable header = req.getMessageHeader();
         assertEquals("10", header.get("Content-Length"));
     }
 

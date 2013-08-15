@@ -5,7 +5,7 @@ import java.util.Hashtable;
 
 public class MyRequestParser implements IRequestParsers {
     Hashtable<String, Object> statusLine = new Hashtable<String, Object>();
-    Hashtable<String, Object> messageHeader = new Hashtable<String, Object>();
+    MessageHeader messageHeader = new MessageHeader();
     Hashtable<String, Object> messageBody = new Hashtable<String, Object>();
     BufferedReader theReader;
 
@@ -19,8 +19,8 @@ public class MyRequestParser implements IRequestParsers {
         return statusLine;
     }
 
-    public Hashtable<String, Object> getMessageHeader() {
-        return messageHeader;
+    public Hashtable getMessageHeader() {
+        return messageHeader.getMessageHeader();
     }
 
     public void parseStatusLine() throws IOException {
@@ -32,14 +32,15 @@ public class MyRequestParser implements IRequestParsers {
 
         items = items[1].split("\\?");
         statusLine.put("Request-URI", items[0]);
-        if(items.length > 1) {
-            statusLine.put("Parameters", ParameterDecoder.decode(items[1]));
-        }
+        if(items.length > 1) statusLine.put("Parameters", ParameterDecoder.decode(items[1]));
 
-        statusLine.put("status-line",
-                statusLine.get("Method") + " " +
+        statusLine.put("status-line", createStatusLine(statusLine));
+    }
+
+    private String createStatusLine(Hashtable statusLine) {
+        return statusLine.get("Method") + " " +
                 statusLine.get("Request-URI") + " " +
-                statusLine.get("HTTP-Version"));
+                statusLine.get("HTTP-Version");
     }
 
     public void parseMessageHeader() throws IOException {

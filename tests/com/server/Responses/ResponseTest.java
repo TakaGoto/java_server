@@ -1,4 +1,4 @@
-package com.server.Requests;
+package com.server.Responses;
 
 import com.server.HtmlGenerator;
 import com.server.Responses.Response;
@@ -18,16 +18,6 @@ public class ResponseTest {
 
     @Before public void init() {
         body = HtmlGenerator.echoBody("Tonarino Totoro");
-    }
-
-    @Test public void getHttpVersion() {
-        resp.setHttpVersion("1.0");
-        assertEquals("HTTP/1.0", resp.getHttpVersion());
-    }
-
-    @Test public void getStatusCode() {
-        resp.setStatusCode("200");
-        assertEquals("200", resp.getStatusCode());
     }
 
     @Test public void testWrite() throws IOException {
