@@ -10,11 +10,9 @@ public class Server {
     private IServerSockets serverSocket;
     protected Router router;
     private int port;
-    private String rootDir;
     ServerHandler serverHandler;
 
-    public Server(int port, String rootDir) {
-        this.rootDir = rootDir;
+    public Server(int port) {
         this.port = port;
         setUpServer();
     }
@@ -38,7 +36,7 @@ public class Server {
 
     private void setUpServer() {
         serverSocket = new MyServerSocket(port);
-        router = new Router(rootDir);
+        router = new Router();
     }
 
     public int getPort() {

@@ -12,7 +12,7 @@ import java.util.Hashtable;
 import static junit.framework.Assert.assertEquals;
 
 public class RouterTest {
-    Router router;
+    Router router = new Router();
     Hashtable<String, Object> request= new Hashtable<String, Object>();
     Hashtable<String, String> body = new Hashtable<String, String>();
     Hashtable<String, Object> response;
@@ -20,7 +20,6 @@ public class RouterTest {
     Responder mockResponder = new MockResponder();
 
     @Before public void init() {
-        router = new Router("/Users/takayuki/Coding/java/cob_spec/public\n");
         request.put("HTTP-Version", "HTTP/1.0");
         request.put("Host", "http://localhost:5000");
         body.put("data", "cosby");
@@ -95,10 +94,6 @@ public class RouterTest {
         response = router.route(request);
         String body = new String((byte[]) response.get("message-body"), "UTF-8");
         assertEquals("404", body);
-    }
-
-    @Test public void getRootDirectory() {
-        assertEquals("/Users/takayuki/Coding/java/cob_spec/public\n", router.getDir());
     }
 
     @Test public void routerHasParameterDecode() {

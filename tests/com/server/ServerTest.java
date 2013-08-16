@@ -19,14 +19,12 @@ public class ServerTest {
     MockServerSocket mockServerSocket;
     MockRequestHandler handler;
     Server server;
-    String rootDir;
 
     @Before public void initialize() {
-        rootDir = "/Users/takayuki/Coding/java/cob_spec/public";
 
         handler = new MockRequestHandler();
         mockServerSocket = new MockServerSocket(5000);
-        server = new Server(5000, rootDir);
+        server = new Server(5000);
         server.setServerSocket(mockServerSocket);
     }
 
@@ -50,11 +48,6 @@ public class ServerTest {
         server.listen();
         assertEquals(4, mockServerSocket.listenMax);
         assertEquals(" ", out.toString());
-    }
-
-    @Test public void serverTakesInRouterDirectory() {
-        server = new Server(5000, "/public");
-        assertEquals("/public", server.getRouter().getDir());
     }
 
     @Test public void serverTakesInMultipleClientSocketsRequests() throws IOException {

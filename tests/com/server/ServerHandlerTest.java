@@ -16,7 +16,7 @@ public class ServerHandlerTest {
 
     @Before public void init() {
         mockServerSocket = new MockServerSocket(5000);
-        route = new Router("public/");
+        route = new Router();
         serverHandler = new ServerHandler(mockServerSocket, route);
     }
 
