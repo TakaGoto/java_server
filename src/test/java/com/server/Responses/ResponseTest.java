@@ -1,7 +1,6 @@
 package com.server.Responses;
 
 import com.server.HtmlGenerator;
-import com.server.Responses.Response;
 import org.junit.Before;
 import org.junit.Test;
 

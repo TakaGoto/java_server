@@ -1,9 +1,9 @@
 package com.server;
 
 import com.server.Handlers.Responder;
-import com.server.Mocks.MockRequestHandler;
 import com.server.Mocks.MockResponder;
 import com.server.Mocks.MockServerSocket;
+import com.server.Mocks.MockRequestHandler;
 import org.junit.Before;
 import org.junit.Test;
 
