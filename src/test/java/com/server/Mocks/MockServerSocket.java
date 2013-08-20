@@ -33,4 +33,9 @@ public class MockServerSocket implements IServerSockets{
     public boolean notClosed() {
         return listenMax <= 0;
     }
+
+    @Override
+    public void close() throws IOException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
