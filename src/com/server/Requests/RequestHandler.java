@@ -5,6 +5,7 @@ import com.server.Responses.Router;
 import com.server.Sockets.ISockets;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
 public class RequestHandler implements Runnable {
     private IRequestParsers parser;
@@ -22,7 +23,8 @@ public class RequestHandler implements Runnable {
         try {
             parser = new MyRequestParser(clientSocket.getInputStream());
             req = new Request(parser);
-            resp.writeTo(router.route(req.getReq()), clientSocket.getOutputStream());
+            Hashtable response = router.route(req.getReq());
+            resp.writeTo(response, clientSocket.getOutputStream());
             clientSocket.close();
         } catch (IOException e) {
            e.printStackTrace();

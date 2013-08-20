@@ -4,3 +4,6 @@ out/
 resources/
 java_server.jar
 java_server.iml
+META-INF/
+public/
+rubyslim/

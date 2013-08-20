@@ -29,12 +29,6 @@ public class MyRequestParser implements IRequestParsers {
         statusLine.put("status-line", createStatusLine(statusLine.getData()));
     }
 
-    private String createStatusLine(Hashtable statusLine) {
-        return statusLine.get("Method") + " " +
-                statusLine.get("Request-URI") + " " +
-                statusLine.get("HTTP-Version");
-    }
-
     public void parseMessageHeader() throws IOException {
         String[] items;
         String line;
@@ -54,14 +48,24 @@ public class MyRequestParser implements IRequestParsers {
             char[] query = new char[length];
             theReader.read(query);
             params.put("length", String.valueOf(length));
-            for(String param: String.valueOf(query).split("&")) {
-                String[] theParams = param.split("=");
-                params.put(theParams[0], theParams[1]);
-                messageBody.put("Body", params);
-            }
+            createMessageBody(params, query);
             int totalLength = 51 + length;
             messageBody.put("Content-Length", String.valueOf(totalLength));
         } catch(NumberFormatException ignored){} catch (ArrayIndexOutOfBoundsException e){}
+    }
+
+    private void createMessageBody(Hashtable params, char[] query) {
+        for(String param: String.valueOf(query).split("&")) {
+            String[] theParams = param.split("=");
+            params.put(theParams[0], theParams[1]);
+            messageBody.put("Body", params);
+        }
+    }
+
+    private String createStatusLine(Hashtable statusLine) {
+        return statusLine.get("Method") + " " +
+                statusLine.get("Request-URI") + " " +
+                statusLine.get("HTTP-Version");
     }
 
     public Hashtable<String,Object> getMessageBody() {

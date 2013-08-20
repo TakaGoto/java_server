@@ -13,8 +13,12 @@ public class Router {
     public Hashtable route(Hashtable<String, Object> req) throws IOException {
         String URI = (String) req.get("Request-URI");
 
-        if(routes.containsKey(URI)) return routes.get(URI).respond(req);
-        else return new FourOhFour().respond(req);
+        if(routes.containsKey(URI)) {
+            return routes.get(URI).respond(req);
+        }
+        else {
+            return new FourOhFour().respond(req);
+        }
     }
 
     public Hashtable<String, Responder> getRoutes() {

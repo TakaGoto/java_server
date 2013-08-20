@@ -15,16 +15,16 @@ public class Request {
         getMessageBody();
     }
 
-    public void getStatusLine() throws IOException {
-        req.putAll(parser.getStatusLine());
-    }
-
     public Object getField(String method) {
         return req.get(method);
     }
 
     public Hashtable<String, Object> getReq() {
         return req;
+    }
+
+    public void getStatusLine() throws IOException {
+        req.putAll(parser.getStatusLine());
     }
 
     public void getMessageHeader() throws IOException {

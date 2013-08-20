@@ -17,10 +17,6 @@ public class Server {
         setUpServer();
     }
 
-    public Router getRouter() {
-        return router;
-    }
-
     public void listen() {
         serverHandler = new ServerHandler(serverSocket, router);
         serverHandler.start();
