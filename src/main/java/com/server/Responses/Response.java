@@ -3,7 +3,7 @@ package com.server.Responses;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Response {
@@ -33,9 +33,19 @@ public class Response {
         Hashtable<String, String> headers = (Hashtable<String, String>) req.get("message-header");
 
         for (String key: headers.keySet()) {
-            String line = String.format("%s: %s", key, headers.get(key));
-            out.write(convertToBytes(line));
-            out.write(convertToBytes(CRLF));
+            if(key.equals("Set-Cookie")){
+                printCookies(headers);
+            } else {
+                String line = String.format("%s: %s", key, headers.get(key));
+                out.write(convertToBytes(line));
+                out.write(convertToBytes(CRLF));
+            }
+        }
+    }
+
+    private void printCookies(Hashtable header) throws IOException {
+        for(Object cookie: (ArrayList) header.get("Set-Cookie")) {
+            out.write(convertToBytes("Set-Cookie: " + cookie));
         }
     }
 
