@@ -45,7 +45,7 @@ public class Response {
 
     private void printCookies(Hashtable header) throws IOException {
         for(Object cookie: (ArrayList) header.get("Set-Cookie")) {
-            out.write(convertToBytes("Set-Cookie: " + cookie));
+            out.write(convertToBytes("Set-Cookie: " + cookie + CRLF));
         }
     }
 

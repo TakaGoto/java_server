@@ -82,8 +82,9 @@ public class ResponseTest {
         req.put("message-body", body.getBytes(Charset.forName("utf-8")));
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resp.writeTo(req, out);
-        Assert.assertTrue(out.toString().contains("Set-Cookie: hello=world; path=/"));
-        Assert.assertTrue(out.toString().contains("Set-Cookie: taka=goto; path=/"));
-        Assert.assertTrue(out.toString().contains("Set-Cookie: board=blah; path=/"));
+        System.out.println(out.toString());
+        Assert.assertTrue(out.toString().contains("Set-Cookie: hello=world; path=/\r\n"));
+        Assert.assertTrue(out.toString().contains("Set-Cookie: taka=goto; path=/\r\n"));
+        Assert.assertTrue(out.toString().contains("Set-Cookie: board=blah; path=/\r\n"));
     }
 }
